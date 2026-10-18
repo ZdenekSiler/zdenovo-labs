@@ -1,0 +1,64 @@
+
+=== wire format (captured from typesafe-sdk) [capture] ==========
+POST https://api.typesafe.ai/v1/systemone | typesafe-sdk/0.7.4
+{
+  "state": {
+    "ticket": {
+      "message": "Payouts failing for 3 days!"
+    }
+  },
+  "model": "jev-latest",
+  "questions": {
+    "is_urgent": {
+      "type": "noul",
+      "instructions": "Does `ticket.message` convey urgency?",
+      "criteria": {
+        "true": "Explicitly time-sensitive",
+        "false": "No urgency"
+      }
+    }
+  }
+}
+
+Score(criteria=[]) -> ValidationError: Value should have at least 1 item after validation, not 0 [type=too_short, input_value=[], input_type=list]
+
+=== triage: one request per ticket, routing in code [replay] ===
+Export crashes  -> engineering_p1  priority=False severity 2.35, repro 0.94  [jev-1.13.0]
+Charged twice   -> billing_refund  priority=False refund 0.96  [jev-1.13.0]
+Currency        -> human           priority=False category unclear (bug_report @ 0.28)  [jev-1.13.0]
+
+=== option-order probe [replay] ================================
+winners per permutation: ['billing', 'orders', 'orders'] consistent: False
+mean distribution: {'billing': 0.46, 'orders': 0.5, 'account': 0.04} -> orders
+
+=== dates as parts, assembled in code [replay] =================
+kick-off: 2026-11-03 | weekday (computed in code): Tuesday
+
+=== count in code [replay] =====================================
+3 fruit: ['apple', 'banana', 'orange']
+
+=== regex candidates, Jev picks, code copies [replay] ==========
+candidates: [('c0', 'billing@acme.example'), ('c1', 'jana@acme.example')]
+invoice address: billing@acme.example
+
+=== injection guard [replay] ===================================
+document release_notes    pass    {'addresses_ai': 0.02, 'issues_instructions': 0.03, 'claims_authority': 0.01, 'requests_exfiltration': 0.01}
+document poisoned_readme  block   {'addresses_ai': 0.91, 'issues_instructions': 0.88, 'claims_authority': 0.62, 'requests_exfiltration': 0.79}
+tool send_email->petra@corp.example       pass    {'deny': 0.03, 'argument_from_untrusted': 0.04, 'irreversibility': 0.43, 'decision_confidence': 0.72}
+tool send_email->triage@attacker.example  block   {'deny': 0.72, 'argument_from_untrusted': 0.93, 'irreversibility': 0.83, 'decision_confidence': 0.58}
+
+=== reliability report (TOY labels - shows the method, not Jev) [offline] 
+bin            n   mean p  observed
+[0.0,0.2)   14     0.05      0.00
+[0.2,0.4)   10     0.20      0.10
+[0.4,0.6)    6     0.55      0.50
+[0.6,0.8)   10     0.75      0.60
+[0.8,1.0)   20     0.95      0.90
+ECE = 0.075
+act when p >= 0.5: automate 60% of cases, 75% of those correct
+act when p >= 0.7: automate 50% of cases, 80% of those correct
+act when p >= 0.9: automate 33% of cases, 90% of those correct
+
+=== cost model (jev-1.13.0 list price: $0.042 / Mtok input, output free) [offline] 
+13 questions, 1 request       1980 input tokens  $0.000083  per 1M docs: $83
+13 questions, 13 requests    16380 input tokens  $0.000688  per 1M docs: $688

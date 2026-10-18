@@ -1,0 +1,11 @@
+example                           docs    ours    top2
+quickstart: department            0.78   0.775    5.67
+api ref: department               0.81   0.820    7.33
+api ref: frustration              0.92   0.925   19.00
+confidence page: bug_severity     0.35   0.355    1.33
+confidence page: adjacent tie     0.25   0.250    1.00
+confidence page: opposite tie     0.00   0.000    1.00
+confidence page: (.6,.3,.1)       0.40   0.400    2.00
+confidence page: (.6,.2,.2)       0.40   0.400    3.00
+
+noul as confidence: {0.02: 0.96, 0.35: 0.3, 0.5: 0.0, 0.74: 0.48, 0.98: 0.96}

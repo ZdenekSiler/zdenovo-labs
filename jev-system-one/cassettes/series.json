@@ -1,0 +1,498 @@
+{
+  "addresses_ai,claims_authority,issues_instructions,requests_exfiltration|9e4bb36377": {
+    "answers": {
+      "addresses_ai": {
+        "noul": 0.02,
+        "type": "noul"
+      },
+      "claims_authority": {
+        "noul": 0.01,
+        "type": "noul"
+      },
+      "issues_instructions": {
+        "noul": 0.03,
+        "type": "noul"
+      },
+      "requests_exfiltration": {
+        "noul": 0.01,
+        "type": "noul"
+      }
+    },
+    "model": "jev-1.13.0",
+    "usage": {
+      "input_tokens": 380,
+      "output_tokens": 72
+    }
+  },
+  "addresses_ai,claims_authority,issues_instructions,requests_exfiltration|af7715578e": {
+    "answers": {
+      "addresses_ai": {
+        "noul": 0.91,
+        "type": "noul"
+      },
+      "claims_authority": {
+        "noul": 0.62,
+        "type": "noul"
+      },
+      "issues_instructions": {
+        "noul": 0.88,
+        "type": "noul"
+      },
+      "requests_exfiltration": {
+        "noul": 0.79,
+        "type": "noul"
+      }
+    },
+    "model": "jev-1.13.0",
+    "usage": {
+      "input_tokens": 380,
+      "output_tokens": 72
+    }
+  },
+  "argument_from_untrusted,decision,irreversibility|b577e98c9f": {
+    "answers": {
+      "argument_from_untrusted": {
+        "noul": 0.04,
+        "type": "noul"
+      },
+      "decision": {
+        "choice": "allow",
+        "confidence": 0.72,
+        "probabilities": {
+          "allow": 0.81,
+          "confirm": 0.16,
+          "deny": 0.03
+        },
+        "type": "choice"
+      },
+      "irreversibility": {
+        "confidence": 0.7,
+        "legend": {
+          "0": "a",
+          "1": "b",
+          "2": "c",
+          "3": "d"
+        },
+        "probabilities": {
+          "0": 0.0,
+          "1": 0.7,
+          "2": 0.3,
+          "3": 0.0
+        },
+        "score": 1.3,
+        "type": "score"
+      }
+    },
+    "model": "jev-1.13.0",
+    "usage": {
+      "input_tokens": 450,
+      "output_tokens": 54
+    }
+  },
+  "argument_from_untrusted,decision,irreversibility|e49277b843": {
+    "answers": {
+      "argument_from_untrusted": {
+        "noul": 0.93,
+        "type": "noul"
+      },
+      "decision": {
+        "choice": "deny",
+        "confidence": 0.58,
+        "probabilities": {
+          "allow": 0.07,
+          "confirm": 0.21,
+          "deny": 0.72
+        },
+        "type": "choice"
+      },
+      "irreversibility": {
+        "confidence": 0.5,
+        "legend": {
+          "0": "a",
+          "1": "b",
+          "2": "c",
+          "3": "d"
+        },
+        "probabilities": {
+          "0": 0,
+          "1": 0.1,
+          "2": 0.3,
+          "3": 0.6
+        },
+        "score": 2.5,
+        "type": "score"
+      }
+    },
+    "model": "jev-1.13.0",
+    "usage": {
+      "input_tokens": 450,
+      "output_tokens": 54
+    }
+  },
+  "bug_severity,category,frustration,has_repro_steps,refund_requested|bba82076bd": {
+    "answers": {
+      "bug_severity": {
+        "confidence": 0.5,
+        "legend": {
+          "0": "Cosmetic: no effect on getting work done",
+          "1": "Degraded: a workaround exists",
+          "2": "Blocking: a core workflow cannot be completed",
+          "3": "Critical: data loss, security exposure, or money lost"
+        },
+        "probabilities": {
+          "0": 0.6,
+          "1": 0.3,
+          "2": 0.1,
+          "3": 0
+        },
+        "score": 0.5,
+        "type": "score"
+      },
+      "category": {
+        "choice": "billing",
+        "confidence": 0.87,
+        "probabilities": {
+          "billing": 0.9,
+          "bug_report": 0.06,
+          "feature_request": 0.01,
+          "other": 0.03
+        },
+        "type": "choice"
+      },
+      "frustration": {
+        "confidence": 0.4,
+        "legend": {
+          "0": "Calm, stating facts",
+          "1": "Frustrated but civil",
+          "2": "Very angry, strong language"
+        },
+        "probabilities": {
+          "0": 0.1,
+          "1": 0.6,
+          "2": 0.3
+        },
+        "score": 1.2,
+        "type": "score"
+      },
+      "has_repro_steps": {
+        "noul": 0.08,
+        "type": "noul"
+      },
+      "refund_requested": {
+        "noul": 0.96,
+        "type": "noul"
+      }
+    },
+    "model": "jev-1.13.0",
+    "usage": {
+      "input_tokens": 410,
+      "output_tokens": 90
+    }
+  },
+  "bug_severity,category,frustration,has_repro_steps,refund_requested|cb183d2502": {
+    "answers": {
+      "bug_severity": {
+        "confidence": 0.55,
+        "legend": {
+          "0": "Cosmetic: no effect on getting work done",
+          "1": "Degraded: a workaround exists",
+          "2": "Blocking: a core workflow cannot be completed",
+          "3": "Critical: data loss, security exposure, or money lost"
+        },
+        "probabilities": {
+          "0": 0,
+          "1": 0.05,
+          "2": 0.55,
+          "3": 0.4
+        },
+        "score": 2.35,
+        "type": "score"
+      },
+      "category": {
+        "choice": "bug_report",
+        "confidence": 0.91,
+        "probabilities": {
+          "billing": 0.03,
+          "bug_report": 0.93,
+          "feature_request": 0.02,
+          "other": 0.02
+        },
+        "type": "choice"
+      },
+      "frustration": {
+        "confidence": 0.55,
+        "legend": {
+          "0": "Calm, stating facts",
+          "1": "Frustrated but civil",
+          "2": "Very angry, strong language"
+        },
+        "probabilities": {
+          "0": 0.05,
+          "1": 0.7,
+          "2": 0.25
+        },
+        "score": 1.2,
+        "type": "score"
+      },
+      "has_repro_steps": {
+        "noul": 0.94,
+        "type": "noul"
+      },
+      "refund_requested": {
+        "noul": 0.03,
+        "type": "noul"
+      }
+    },
+    "model": "jev-1.13.0",
+    "usage": {
+      "input_tokens": 410,
+      "output_tokens": 90
+    }
+  },
+  "bug_severity,category,frustration,has_repro_steps,refund_requested|e890617062": {
+    "answers": {
+      "bug_severity": {
+        "confidence": 0.4,
+        "legend": {
+          "0": "Cosmetic: no effect on getting work done",
+          "1": "Degraded: a workaround exists",
+          "2": "Blocking: a core workflow cannot be completed",
+          "3": "Critical: data loss, security exposure, or money lost"
+        },
+        "probabilities": {
+          "0": 0.5,
+          "1": 0.4,
+          "2": 0.1,
+          "3": 0
+        },
+        "score": 0.6,
+        "type": "score"
+      },
+      "category": {
+        "choice": "bug_report",
+        "confidence": 0.28,
+        "probabilities": {
+          "billing": 0.41,
+          "bug_report": 0.46,
+          "feature_request": 0.05,
+          "other": 0.08
+        },
+        "type": "choice"
+      },
+      "frustration": {
+        "confidence": 0.55,
+        "legend": {
+          "0": "Calm, stating facts",
+          "1": "Frustrated but civil",
+          "2": "Very angry, strong language"
+        },
+        "probabilities": {
+          "0": 0.7,
+          "1": 0.3,
+          "2": 0
+        },
+        "score": 0.3,
+        "type": "score"
+      },
+      "has_repro_steps": {
+        "noul": 0.31,
+        "type": "noul"
+      },
+      "refund_requested": {
+        "noul": 0.12,
+        "type": "noul"
+      }
+    },
+    "model": "jev-1.13.0",
+    "usage": {
+      "input_tokens": 410,
+      "output_tokens": 90
+    }
+  },
+  "day,month,year|dc2079edfe": {
+    "answers": {
+      "day": {
+        "choice": "3",
+        "confidence": 0.91,
+        "probabilities": {
+          "1": 0.0029,
+          "10": 0.0029,
+          "11": 0.0029,
+          "12": 0.0029,
+          "13": 0.0029,
+          "14": 0.0029,
+          "15": 0.0029,
+          "16": 0.0029,
+          "17": 0.0029,
+          "18": 0.0029,
+          "19": 0.0029,
+          "2": 0.0029,
+          "20": 0.0029,
+          "21": 0.0029,
+          "22": 0.0029,
+          "23": 0.0029,
+          "24": 0.0029,
+          "25": 0.0029,
+          "26": 0.0029,
+          "27": 0.0029,
+          "28": 0.0029,
+          "29": 0.0029,
+          "3": 0.91,
+          "30": 0.0029,
+          "31": 0.0029,
+          "4": 0.0029,
+          "5": 0.0029,
+          "6": 0.0029,
+          "7": 0.0029,
+          "8": 0.0029,
+          "9": 0.0029,
+          "not_stated": 0.0029
+        },
+        "type": "choice"
+      },
+      "month": {
+        "choice": "november",
+        "confidence": 0.95,
+        "probabilities": {
+          "april": 0.0042,
+          "august": 0.0042,
+          "december": 0.0042,
+          "february": 0.0042,
+          "january": 0.0042,
+          "july": 0.0042,
+          "june": 0.0042,
+          "march": 0.0042,
+          "may": 0.0042,
+          "not_stated": 0.0042,
+          "november": 0.95,
+          "october": 0.0042,
+          "september": 0.0042
+        },
+        "type": "choice"
+      },
+      "year": {
+        "choice": "2026",
+        "confidence": 0.97,
+        "probabilities": {
+          "2020": 0.0027,
+          "2021": 0.0027,
+          "2022": 0.0027,
+          "2023": 0.0027,
+          "2024": 0.0027,
+          "2025": 0.0027,
+          "2026": 0.97,
+          "2027": 0.0027,
+          "2028": 0.0027,
+          "2029": 0.0027,
+          "2030": 0.0027,
+          "not_stated": 0.0027
+        },
+        "type": "choice"
+      }
+    },
+    "model": "jev-1.13.0",
+    "usage": {
+      "input_tokens": 520,
+      "output_tokens": 54
+    }
+  },
+  "item_0,item_1,item_2,item_3,item_4,item_5,item_6,item_7|88824257ee": {
+    "answers": {
+      "item_0": {
+        "noul": 0.03,
+        "type": "noul"
+      },
+      "item_1": {
+        "noul": 0.97,
+        "type": "noul"
+      },
+      "item_2": {
+        "noul": 0.03,
+        "type": "noul"
+      },
+      "item_3": {
+        "noul": 0.97,
+        "type": "noul"
+      },
+      "item_4": {
+        "noul": 0.03,
+        "type": "noul"
+      },
+      "item_5": {
+        "noul": 0.03,
+        "type": "noul"
+      },
+      "item_6": {
+        "noul": 0.97,
+        "type": "noul"
+      },
+      "item_7": {
+        "noul": 0.03,
+        "type": "noul"
+      }
+    },
+    "model": "jev-1.13.0",
+    "usage": {
+      "input_tokens": 300,
+      "output_tokens": 144
+    }
+  },
+  "perm_0,perm_1,perm_2|8847d73ff6": {
+    "answers": {
+      "perm_0": {
+        "choice": "billing",
+        "confidence": 0.28,
+        "probabilities": {
+          "account": 0.04,
+          "billing": 0.52,
+          "orders": 0.44
+        },
+        "type": "choice"
+      },
+      "perm_1": {
+        "choice": "orders",
+        "confidence": 0.37,
+        "probabilities": {
+          "account": 0.04,
+          "billing": 0.38,
+          "orders": 0.58
+        },
+        "type": "choice"
+      },
+      "perm_2": {
+        "choice": "orders",
+        "confidence": 0.23,
+        "probabilities": {
+          "account": 0.04,
+          "billing": 0.47,
+          "orders": 0.49
+        },
+        "type": "choice"
+      }
+    },
+    "model": "jev-1.13.0",
+    "usage": {
+      "input_tokens": 260,
+      "output_tokens": 54
+    }
+  },
+  "pick|19af505e20": {
+    "answers": {
+      "pick": {
+        "choice": "c0",
+        "confidence": 0.86,
+        "probabilities": {
+          "c0": 0.91,
+          "c1": 0.06,
+          "none": 0.03
+        },
+        "type": "choice"
+      }
+    },
+    "model": "jev-1.13.0",
+    "usage": {
+      "input_tokens": 240,
+      "output_tokens": 18
+    }
+  }
+}

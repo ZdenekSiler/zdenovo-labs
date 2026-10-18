@@ -1,0 +1,105 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Workshop Arena</title>
+<style>
+  body { margin: 0; overflow: hidden; background: #0b0d12; font: 14px system-ui, sans-serif; color: #e6e8ee; }
+  #hud { position: fixed; top: 12px; left: 12px; padding: 10px 14px; border-radius: 8px;
+         background: rgba(15,18,26,.78); line-height: 1.5; }
+  #hud b { color: #4ade80; }
+  #msg { position: fixed; inset: 0; display: grid; place-items: center; font-size: 28px;
+         pointer-events: none; text-shadow: 0 2px 12px #000; }
+</style>
+<div id="hud">WASD / arrows to move<br>Crates: <b id="score">0</b> / <span id="total">0</span><br>Time: <b id="clock">0.0</b>s</div>
+<div id="msg"></div>
+<script type="importmap">
+{ "imports": {
+    "three": "./vendor/three.module.js",
+    "three/addons/": "./vendor/jsm/"
+} }
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(innerWidth, innerHeight);
+document.body.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x0b0d12);
+scene.fog = new THREE.Fog(0x0b0d12, 18, 46);
+
+const camera = new THREE.PerspectiveCamera(55, innerWidth / innerHeight, 0.1, 200);
+addEventListener('resize', () => {
+  camera.aspect = innerWidth / innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+});
+
+scene.add(new THREE.HemisphereLight(0x9fb4ff, 0x20242e, 1.1));
+const sun = new THREE.DirectionalLight(0xffe9c4, 2.0);
+sun.position.set(6, 12, 4);
+scene.add(sun);
+
+const state = { player: null, crates: [], score: 0, start: performance.now(), done: false };
+const keys = new Set();
+addEventListener('keydown', e => keys.add(e.key.toLowerCase()));
+addEventListener('keyup', e => keys.delete(e.key.toLowerCase()));
+
+new GLTFLoader().load('assets/arena.glb', (gltf) => {
+  scene.add(gltf.scene);
+  gltf.scene.traverse((o) => {
+    if (!o.isMesh) return;
+    if (o.name === 'Player') state.player = o;
+    else if (o.name.startsWith('Crate')) state.crates.push(o);
+  });
+  document.getElementById('total').textContent = state.crates.length;
+  window.__ready = true;                     // playtest hook
+}, undefined, (err) => {
+  document.getElementById('msg').textContent = 'Failed to load arena.glb';
+  window.__error = String(err);
+});
+
+const clock = new THREE.Clock();
+function frame() {
+  requestAnimationFrame(frame);
+  const dt = Math.min(clock.getDelta(), 0.05);
+  const p = state.player;
+
+  if (p) {
+    const speed = 7 * dt;
+    if (keys.has('w') || keys.has('arrowup')) p.position.z -= speed;
+    if (keys.has('s') || keys.has('arrowdown')) p.position.z += speed;
+    if (keys.has('a') || keys.has('arrowleft')) p.position.x -= speed;
+    if (keys.has('d') || keys.has('arrowright')) p.position.x += speed;
+    p.position.x = THREE.MathUtils.clamp(p.position.x, -11, 11);
+    p.position.z = THREE.MathUtils.clamp(p.position.z, -11, 11);
+
+    for (const c of state.crates) {
+      if (!c.visible) continue;
+      c.rotation.y += dt * 1.4;
+      if (p.position.distanceTo(c.position) < 1.4) {
+        c.visible = false;
+        state.score++;
+        document.getElementById('score').textContent = state.score;
+      }
+    }
+    if (!state.done && state.score === state.crates.length && state.crates.length) {
+      state.done = true;
+      document.getElementById('msg').textContent =
+        `Cleared in ${((performance.now() - state.start) / 1000).toFixed(1)}s`;
+    }
+
+    camera.position.set(p.position.x, p.position.y + 9, p.position.z + 13);
+    camera.lookAt(p.position);
+  }
+
+  if (!state.done) {
+    document.getElementById('clock').textContent =
+      ((performance.now() - state.start) / 1000).toFixed(1);
+  }
+  renderer.render(scene, camera);
+}
+frame();
+</script>

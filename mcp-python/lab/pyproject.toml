@@ -1,0 +1,9 @@
+[project]
+name = "mcp-lab"
+version = "0.1.0"
+description = "Lab for the zdenovo.com series Building MCP Servers in Python"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "mcp[cli]>=2.2.0",
+]
