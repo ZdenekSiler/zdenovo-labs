@@ -1,0 +1,42 @@
+== 1. prompt caching: same prefix vs a timestamp in the system prompt ==
+stable prefix  : ['$0.00572', '$0.00051', '$0.00051', '$0.00051', '$0.00051'] total $0.00775
+timestamped    : ['$0.00574', '$0.00574', '$0.00574', '$0.00574', '$0.00574'] total $0.02871
+usage call 2   : Usage(input_tokens=2268, output_tokens=5, cache_read_tokens=2266, cache_write_tokens=0) vs Usage(input_tokens=2277, output_tokens=5, cache_read_tokens=0, cache_write_tokens=2275)
+
+== 2. token-aware rate limiting: reserve worst case, reconcile actual ==
+reserve #0: ok, reserved 4107, bucket=5893
+reserve #1: ok, reserved 4107, bucket=1786
+reserve #2: quota_exceeded (token rate limit (needs 4107)), retry_after=13.93s
+reserve #3: quota_exceeded (token rate limit (needs 4107)), retry_after=13.93s
+after reconciling actual usage (52 tokens each): bucket=9896
+oversized request: quota_exceeded, retry_after=None (never fits: don't ask them to wait)
+
+== 3. hierarchical budgets with holds: globex has $0.002/month ==
+req 0: ok $0.000058  spent=$0.000058
+req 5: ok $0.000058  spent=$0.000348
+req 10: ok $0.000058  spent=$0.000638
+req 15: ok $0.000058  spent=$0.000928
+req 20: ok $0.000058  spent=$0.001218
+req 23: ok $0.000058  spent=$0.001392
+req 24: ok $0.000058  spent=$0.001450
+req 25: ok $0.000058  spent=$0.001508
+req 26: budget_exceeded (budget exhausted for tenant:globex) HTTP 402
+alerts: []
+acme 8192-token request: ok (acme has $50)
+
+== 4. exact cache: opt-in, tenant-scoped, PII-safe ==
+alice/acme  cached=False cost=$0.000140 text='Reply to: Draft a refund confirmation to alice@acme.test'
+carol/acme  cached=True  cost=$0.000000 text='Reply to: Draft a refund confirmation to carol@acme.test'
+bob/globex  cached=False cost=$0.000140 text='Reply to: Draft a refund confirmation to bob@globex.test'
+upstream calls=2, hits=1, misses=2
+
+== 5. semantic cache: why similarity is not equivalence (toy embedding) ==
+1.00 HIT  'how do I cancel my order' -> 'Go to Orders > Cancel.'
+0.93 HIT  'How do I NOT cancel my order?' -> 'Go to Orders > Cancel.'
+0.84 miss "How do I cancel my order? I don't want to cancel my subscription"
+0.67 miss 'Where do I see my order?'
+
+== 6. the same month of traffic on three models ==
+haiku-5-5   no cache $      355   cached prefix $      355  (cache-read price unknown: billed at full input)
+sonnet-5-5  no cache $    7,100   cached prefix $    3,500
+opus-5-5    no cache $   14,200   cached prefix $    6,600

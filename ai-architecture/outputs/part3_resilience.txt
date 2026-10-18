@@ -1,0 +1,41 @@
+== 1. retry amplification: SDK retries inside gateway retries ==
+sdk max_retries=2: upstream calls to anthropic=9, gateway saw 3 attempts, served by llama-local-70b
+sdk max_retries=0: upstream calls to anthropic=3, gateway saw 3 attempts, served by llama-local-70b
+
+== 2. full-jitter backoff, and Retry-After wins when it's longer ==
+ceilings : [0.5, 1.0, 2.0, 4.0, 4.0]
+sampled  : [0.162, 0.151, 1.302, 0.29, 2.144]
+429 w/ Retry-After=1 -> 1.0
+
+== 3. primary outage: breaker + retry budget + fallback, 40 requests ==
+req 0: anthropic#1:overloaded(slept 0.162s) | anthropic#2:overloaded(slept 0.151s) | anthropic#3:overloaded | selfhosted#1:ok
+req 1: anthropic#1:overloaded | selfhosted#1:ok
+req 2: anthropic#0:circuit_open | selfhosted#1:ok
+req 3: anthropic#0:circuit_open | selfhosted#1:ok
+req ...: ...
+req 38: anthropic#0:circuit_open | selfhosted#1:ok
+req 39: anthropic#0:circuit_open | selfhosted#1:ok
+breaker transitions: ['closed->open@0.8s']
+anthropic upstream calls for 40 requests: 4
+retry budget tokens left: 10.0
+-- primary recovers; time passes past the cooldown --
+req after+0: anthropic#1:ok
+req after+1: anthropic#1:ok
+req after+2: anthropic#1:ok
+breaker transitions: ['open->half_open@51.3s', 'half_open->closed@51.3s']
+
+== 4. same outage without breaker or budget (what most code does) ==
+anthropic upstream calls for 40 requests: 120, virtual time spent sleeping in backoff: 28.3s
+
+== 5. a 400 is not retried and not failed over ==
+invalid_request | attempts: anthropic#1:invalid_request | selfhosted calls: 0
+
+== 6. one deadline for the whole request (real clock) ==
+timeout after 1.0s | anthropic#1:timeout(slept 0.032s) | anthropic#2:timeout(slept 0.03s) | anthropic#3:timeout | selfhosted#1:timeout+no_time
+
+== 7. streaming: failover before the first byte, never after ==
+primary=529       -> 'Reply to: Tell me about breakers'  (selfhosted calls=1)
+primary=midstream -> '\n[stream interrupted]'  (selfhosted calls=0)
+
+== 8. hedging a slow primary (real clock) ==
+winner=backup (llama-local-70b) in 0.1s; upstream calls: anthropic=1 selfhosted=1

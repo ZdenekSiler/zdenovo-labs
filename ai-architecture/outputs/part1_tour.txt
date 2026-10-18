@@ -1,0 +1,28 @@
+== what the upstream saw (last user message) ==
+'My card <CARD_1> was charged twice, email me at <EMAIL_1>'
+== what the caller got ==
+served_by=anthropic/claude-sonnet-5-5 finish=stop
+text='Reply to: My card 4111 1111 1111 1111 was charged twice, email me at jane.doe@example.com'
+usage=Usage(input_tokens=27, output_tokens=16, cache_read_tokens=0, cache_write_tokens=0)
+cost_usd=0.000214
+guardrails=["pii_redactor:REDACT:redacted ['CARD', 'EMAIL']"]
+attempts=[('anthropic', 'claude-sonnet-5-5', 1, 'ok')]
+== trace ==
+gateway chat chat-default [SERVER]
+  · aigw.tenant = acme
+  · aigw.feature = support-bot
+  · aigw.cost_usd = 0.000214
+  guardrails input [INTERNAL]
+    · aigw.guardrail.verdict = REDACT
+  chat claude-sonnet-5-5 [CLIENT]
+    · gen_ai.provider.name = anthropic
+    · gen_ai.request.model = claude-sonnet-5-5
+    · gen_ai.usage.input_tokens = 27
+    · gen_ai.usage.output_tokens = 16
+  guardrails output [INTERNAL]
+    · aigw.guardrail.verdict = ALLOW
+
+== the same gateway over HTTP ==
+200 {'id': 'msg_fake_002', 'model': 'claude-sonnet-5-5', 'text': 'Reply to: What is a gateway?', 'finish_reason': 'stop', 'cached': False, 'usage': {'input_tokens': 4, 'output_tokens': 7, 'cache_read_tokens': 0}, 'cost_usd': 7.8e-05}
+401 {'error': {'type': 'auth', 'message': 'invalid key'}}
+404 {'error': {'type': 'not_found', 'message': "unknown model alias 'claude-sonnet-5-5'"}}

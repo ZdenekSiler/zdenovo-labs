@@ -1,0 +1,61 @@
+== 1. the trace of a request that failed over ==
+gateway chat chat-default [SERVER]
+  · aigw.tenant = acme
+  · aigw.feature = support-bot
+  · aigw.served_by = selfhosted/llama-local-70b
+  · aigw.cost_usd = 1.25e-06
+  guardrails input [INTERNAL]
+    · aigw.guardrail.verdict = ALLOW
+  chat claude-sonnet-5-5 [CLIENT] ERROR
+    · aigw.attempt = 1
+    · error.type = overloaded
+    · gen_ai.request.model = claude-sonnet-5-5
+  chat claude-sonnet-5-5 [CLIENT] ERROR
+    · aigw.attempt = 2
+    · error.type = overloaded
+    · gen_ai.request.model = claude-sonnet-5-5
+  chat claude-sonnet-5-5 [CLIENT] ERROR
+    · aigw.attempt = 3
+    · error.type = overloaded
+    · gen_ai.request.model = claude-sonnet-5-5
+  chat llama-local-70b [CLIENT]
+    · aigw.attempt = 1
+    · gen_ai.request.model = llama-local-70b
+    · gen_ai.usage.input_tokens = 4
+  guardrails output [INTERNAL]
+    · aigw.guardrail.verdict = ALLOW
+
+== 2. metrics after 20 mixed requests ==
+aigw.cost                                            globex  support-bot  $0.00736
+aigw.cost                                            acme    support-bot  $0.00271
+aigw.cost                                            acme    search       $0.00217
+aigw.cost                                            acme    summarise    $0.00163
+aigw.cost                                            globex  summarise    $0.00109
+aigw.cost                                            globex  search       $0.00054
+aigw.guardrail.verdicts                              {('pii_redactor', 'REDACT'): 20, ('secret_scanner', 'ALLOW'): 39, ('injection_heuristic', 'ALLOW'): 20, ('pii_redactor', 'ALLOW'): 19}
+aigw.requests                                        {'chat-default': 19, 'invalid_request': 1}
+gen_ai.client.inference.duration                     {'overloaded': 1, 'claude-sonnet-5-5': 19, 'invalid_request': 1}
+gen_ai.client.inference.usage.cache_read.input_tokens {'claude-sonnet-5-5': 40644}
+gen_ai.client.inference.usage.cache_write.input_tokens {'claude-sonnet-5-5': 2258}
+gen_ai.client.inference.usage.input_tokens           {'claude-sonnet-5-5': 43007}
+gen_ai.client.inference.usage.output_tokens          {'claude-sonnet-5-5': 152}
+
+== 3. one call, three answers to 'how many input tokens?' ==
+response.usage.input_tokens (Anthropic API field) = 1  (+ cache_read_input_tokens=2258)
+gateway chat chat-default [SERVER]
+  guardrails input [INTERNAL]
+  chat claude-sonnet-5-5 [CLIENT]
+    · gen_ai.usage.input_tokens = 2259
+    · gen_ai.usage.cache_read.input_tokens = 2258
+  anthropic.messages.create [CLIENT]
+    · gen_ai.usage.input_tokens = 2259
+    · gen_ai.usage.cache_read.input_tokens = 2258
+  guardrails output [INTERNAL]
+naive SUM(gen_ai.usage.input_tokens) over the trace = 4518  <- double counted
+
+== 4. content capture is opt-in, and happens after redaction ==
+gen_ai.input.messages  = [{"role": "user", "parts": [{"type": "text", "content": "Refund card <CARD_1>, I'm <EMAIL_1>"}]}]
+gen_ai.output.messages = [{"role": "assistant", "parts": [{"type": "text", "content": "Reply to: Refund card <CARD_1>, I'm <EMAIL_1>"}], "finish_reason": "stop"}]
+
+== 5. tail sampling 200 traces ==
+{'dropped': 184, 'guardrail': 4, 'baseline': 9, 'error': 2, 'expensive': 1} -> kept 16/200

@@ -1,0 +1,19 @@
+== outcomes by phase ==
+normal    {'ok': 100}  availability=100.0%  served_by={'claude-sonnet-5-5': 100}
+outage    {'ok': 80}  availability=100.0%  served_by={'llama-local-70b': 80}
+recovered {'ok': 97, 'budget_exceeded': 23}  availability=100.0%  served_by={'llama-local-70b': 11, 'claude-sonnet-5-5': 86}
+
+breaker: ['closed->open@101.6s', 'open->half_open@131.6s', 'half_open->open@131.6s', 'open->half_open@161.6s', 'half_open->open@161.6s', 'open->half_open@191.6s', 'half_open->closed@191.6s']
+anthropic upstream calls: 193 (outage phase cost us 7 failed calls)
+flags   : ["injection_heuristic:FLAG:injection phrase in user message: 'Ignore previous instructions'"]
+alerts  : ['tenant:globex crossed 80% of budget']
+
+== spend ==
+feature:acme/search          $0.0337
+feature:acme/support-bot     $0.0679
+feature:globex/search        $0.0125
+feature:globex/support-bot   $0.0125
+key:aigw_live_TJyETY         $0.1016
+key:aigw_live_mD5ve4         $0.0250
+tenant:acme                  $0.1016
+tenant:globex                $0.0250

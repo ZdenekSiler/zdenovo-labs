@@ -1,0 +1,10 @@
+warn  chat-default       no fallback for 'tools' (only claude-sonnet-5-5)
+warn  chat-eu-only       no fallback for 'chat' (only llama-local-70b)
+warn  chat-eu-only       no fallback for 'stream' (only llama-local-70b)
+error chat-experimental  some-model-latest is not a pinned version
+warn  chat-experimental  no fallback for 'chat' (only some-model-latest)
+error limits             tenant TPM sums to 2,200,000 > provider limit 2,000,000
+warn  digest/v2          time-like value in prompt: breaks prompt caching
+error billing/v1         secret in prompt: ['anthropic_key']
+
+3 errors, 5 warnings -> CI FAILS
