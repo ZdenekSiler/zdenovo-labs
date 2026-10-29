@@ -1,0 +1,459 @@
+# Captured 2026-10-28/29 on a 16-core WSL2 laptop, CPU-only Ollama (llama3 8B). --chaos 0.1.
+# Repetitive progress lines are trimmed (one kept per run of them). Times are local. [...] marks cuts.
+# The laptop slept several times overnight; the gaps are visible in the timestamps.
+
+############ NIGHT 1: downloads, listings, a second supervisor, kill -9, resume ############
+
+$ python3 run.py run --max-per-offer 1500 --chaos 0.1        # 19:13:19
+19:13:19 [download] planned 4 new task(s), 4 total
+19:13:29 [download] done=2 running=2
+19:13:34 [download] gate passed
+19:13:34 [listings] planned 120 new task(s), 120 total
+19:22:47 [listings] done=16 pending=102 running=2
+$ python3 run.py run        # a second supervisor, same workdir
+another supervisor is already running on this workdir; refusing to start
+(exit 1)
+$ pkill -9 -f 'python3 -u run.py run'        # 19:22:56: supervisor + every worker
+processes left: 0
+$ python3 run.py status
+download   {'done': 4}
+listings   {'dead': 1, 'done': 16, 'pending': 101, 'running': 2}
+ruian      {}
+census     {}
+signals    {}
+reduce     {}
+$ python3 run.py run        # resume, 19:22:57
+19:22:57 [download] planned 0 new task(s), 4 total
+19:22:57 [download] done=4
+19:22:58 [download] gate passed
+19:22:58 [listings] planned 0 new task(s), 120 total
+19:26:19 [listings] dead=1 done=22 pending=93 running=4
+19:26:23 [listings] STOP requested: halting cleanly, re-run to resume
+
+wall time 206s
+$ python3 run.py stop        # 19:25:50: human, after reading the dead letter
+touched work/STOP; the run halts after in-flight tasks
+=== exit 1 at 19:26:23
+# (fixed: JSONL now splits on \n only; retries reuse a per-URL cache instead of re-fetching)
+$ python3 run.py requeue listings:prodej:0010
+requeued
+$ python3 run.py run        # resume on the fixed code, 19:26:40
+19:26:40 [download] planned 0 new task(s), 4 total
+19:26:40 [download] done=4
+19:26:41 [download] gate passed
+19:26:41 [listings] planned 0 new task(s), 120 total
+08:40:07 [listings] done=81 pending=38 running=1
+08:40:16 [listings] STOP requested: halting cleanly, re-run to resume
+
+wall time 47,616s
+$ python3 run.py stop        # 08:39:39: stopping to deploy offline handling + chaos menu
+touched work/STOP; the run halts after in-flight tasks
+=== exit 1 at 08:40:16
+# (deployed: Offline + circuit breaker, sleep detection, chaos menu)
+$ python3 run.py run        # resume, 08:56:35
+08:56:35 [download] planned 0 new task(s), 4 total
+08:56:35 [download] done=4
+08:56:35 [download] gate passed
+08:56:35 [listings] planned 0 new task(s), 120 total
+08:58:17 [listings] done=84 pending=34 running=2
+         [... 11 progress lines ...]
+09:14:17 [listings] done=120
+09:14:18 [listings] gate passed
+09:14:18 [ruian] planned 26 new task(s), 26 total
+09:14:18 [ruian] pending=19 running=7
+09:14:18 [ruian] worker w0.5@1038524 died (exit 137); restarting
+09:14:19 [ruian] worker w4.9@1038524 died (exit 137); restarting
+09:14:19 [ruian] worker w6.11@1038524 died (exit 137); restarting
+09:14:49 [ruian] done=22 pending=1 running=3
+09:14:49 [ruian] worker w4.14@1038524 died (exit 137); restarting
+09:15:19 [ruian] done=25 running=1
+09:15:28 [ruian] gate passed
+09:15:28 [census] planned 2 new task(s), 2 total
+09:15:28 [census] pending=1 running=1
+09:15:34 [census] gate passed
+09:15:34 [signals] planned 53 new task(s), 53 total
+09:16:36 [signals] pending=51 running=2
+09:18:09 [signals] host was frozen for 2 min; extended 2 lease(s)
+09:18:09 [signals] pending=51 running=2
+         [... 181 progress lines ...]
+10:30:13 [signals] dead=8 done=44 running=1
+10:30:17 [signals] GATE FAILED: ['48 sale ads (15.34%) without signals, budget is 2.0%']. Not starting the next stage.
+
+wall time 5,623s
+$ python3 run.py blackout 90        # 08:58:22: drill
+network 'down' for 90s: watch the stage pause, then resume on its own
+$ scripts/chaos.sh freeze 90        # 09:16:36: drill
+frozen for 90s (3 processes)
+thawed
+=== exit 1 at 10:30:18
+# (signals made non-blocking: enrichment can't hold the main result hostage)
+$ python3 run.py run        # resume, 11:07:35
+11:07:35 [download] planned 0 new task(s), 4 total
+11:07:35 [download] done=4
+11:07:35 [download] gate passed
+11:07:35 [listings] planned 0 new task(s), 120 total
+11:07:35 [listings] done=120
+11:07:36 [listings] gate passed
+11:07:36 [ruian] planned 0 new task(s), 26 total
+11:07:36 [ruian] done=26
+11:07:37 [ruian] gate passed
+11:07:37 [census] planned 0 new task(s), 2 total
+11:07:37 [census] gate passed
+11:07:37 [signals] planned 0 new task(s), 53 total
+11:07:37 [signals] dead=8 done=45
+11:07:37 [signals] GATE FAILED (non-blocking): ['48 sale ads (15.34%) without signals, budget is 2.0%']. Continuing without it.
+11:07:37 [reduce] planned 1 new task(s), 1 total
+11:08:08 [reduce] running=1
+11:08:15 [reduce] gate passed
+
+wall time 40s
+=== exit 0 at 11:08:15
+
+############ MORNING: scripts/morning.sh (headless Claude Code) ############
+
+# The reviewer requeued all 8 dead signal batches once and resumed; my 15-minute timeout wrapper
+# then killed the review session (exit 124) while the resume was still running. It had already
+# written this interim REVIEW.md. The resume it started finished at 11:23:56.
+
+## Verdict
+INTERIM (resume in progress): FAIL at `signals`. 8 dead batches left 48 sale ads (15.34%) without signals (budget 2.0%).
+All other gates pass. The core result (prices, yields, census) was delivered without seller signals.
+
+## What I did
+- Classified all 8 dead letters (`signals:0010 0013 0028 0029 0035 0039 0043 0045`) as **model quality**.
+  The same canary fails on every attempt (mostly a neutral ad mislabelled urgent/negotiable).
+  The two `ollama HTTP 500`s (0010 #3, 0043 #1) were transient, but a canary also failed on every other attempt of both batches.
+- None of them had been requeued before (no earlier REVIEW.md, and the report shows no requeues).
+  Requeued each **once** and resumed with `python3 run.py run`. This file will be updated with the outcome.
+- Offline pauses (bezrealitky blackout drill, 10 Ollama outages, 1 freeze) were recovered automatically, so they aren't failures.
+- No compliance or fatal/schema dead letters.
+
+## Needs a human
+- Warning: robots.txt for vdp.cuzk.gov.cz was unreachable, and the RÚIAN open-data file was downloaded anyway. Confirm that's acceptable.
+- If any batch dies again, it stays dead. Deciding on the model, prompt or canaries is your call.
+- Caveats on facts.json: all data are **asking prices from one portal (bezrealitky.cz)**, so they aren't the market.
+  The summary's "Czech flat market" framing overstates this.
+  Brno rests on 26 sale / 20 rent ads, too few for a reliable 3.5% yield.
+  Praha and Brno showing the same 3.5% gross yield deserves a sanity check.
+
+------------ queue events from the reviewer's resume ------------
+11:09:05  signals:0010  requeued  -
+11:09:05  signals:0013  requeued  -
+11:09:05  signals:0028  requeued  -
+11:09:05  signals:0029  requeued  -
+11:09:06  signals:0035  requeued  -
+11:09:06  signals:0039  requeued  -
+11:09:06  signals:0043  requeued  -
+11:09:06  signals:0045  requeued  -
+11:09:10  -  run_start  workers=8 chaos=0.1
+11:10:05  signals:0013  retry  canary failed: canary k4: got negotiable/False, known answer neutral/False
+11:10:50  signals:0010  retry  canary failed: canary k2: got urgent/True, known answer neutral/True
+11:11:36  signals:0028  retry  canary failed: canary k5: got urgent/True, known answer neutral/True
+11:11:56  signals:0013  retry  canary failed: canary k4: got negotiable/False, known answer neutral/False
+11:12:14  signals:0010  retry  canary failed: canary k2: got urgent/True, known answer neutral/True
+11:12:36  signals:0028  retry  canary failed: canary k5: got urgent/True, known answer neutral/True
+11:12:55  signals:0013  retry  canary failed: canary k4: got negotiable/False, known answer neutral/False
+11:13:13  signals:0010  retry  canary failed: canary k2: got urgent/True, known answer neutral/True
+11:13:34  signals:0010  offline  ollama offline: [chaos] connection refused
+11:13:34  -  circuit_open  signals: ollama unreachable
+11:13:52  signals:0013  dead  canary failed: canary k4: got negotiable/False, known answer neutral/False
+11:14:15  signals:0010  dead  canary failed: canary k2: got urgent/True, known answer neutral/True
+11:15:01  signals:0029  retry  canary failed: canary k2: got urgent/True, known answer neutral/True
+11:15:50  signals:0035  retry  canary failed: canary k5: got negotiable/False, known answer neutral/False
+11:16:46  signals:0039  retry  canary failed: canary k7: got urgent/False, known answer negotiable/False
+11:17:07  signals:0029  retry  canary failed: canary k2: got urgent/True, known answer neutral/True
+11:17:26  signals:0035  retry  canary failed: canary k5: got negotiable/False, known answer neutral/False
+11:17:45  signals:0039  retry  canary failed: canary k7: got urgent/False, known answer negotiable/False
+11:18:07  signals:0029  retry  canary failed: canary k2: got urgent/True, known answer neutral/True
+11:18:29  signals:0035  retry  canary failed: canary k5: got negotiable/False, known answer neutral/False
+11:18:49  signals:0039  retry  canary failed: canary k7: got urgent/False, known answer negotiable/False
+11:19:10  -  circuit_closed  signals: ollama back after 337s
+11:19:33  signals:0035  dead  canary failed: canary k5: got negotiable/False, known answer neutral/False
+11:19:33  signals:0043  offline  ollama offline: [chaos] connection refused
+11:19:33  -  circuit_open  signals: ollama unreachable
+11:19:54  signals:0039  dead  canary failed: canary k1: got negotiable/False, known answer neutral/False; canary k7: got urgent/False, known
+11:21:02  signals:0043  retry  canary failed: canary k3: got urgent/True, known answer neutral/True; canary k5: got negotiable/False, known a
+11:22:11  signals:0045  retry  canary failed: canary k4: got urgent/False, known answer neutral/False
+11:22:37  signals:0043  retry  canary failed: canary k3: got urgent/True, known answer neutral/True; canary k5: got negotiable/False, known a
+11:22:41  signals:0043  offline  ollama offline: [chaos] connection refused
+11:22:59  -  circuit_closed  signals: ollama back after 206s
+11:23:27  signals:0043  retry  canary failed: canary k3: got urgent/True, known answer neutral/True; canary k5: got negotiable/False, known a
+11:23:56  signals:0043  dead  canary failed: canary k3: got urgent/True, known answer neutral/True
+11:23:56  -  warning  signals gate failed, results reported without it: ['30 sale ads (9.58%) without signals, budget is 2.0%']
+11:23:57  -  run_end  all gates passed
+
+------------ work/out/MORNING_REPORT.md (final) ------------
+# Morning report (2026-10-29 11:24)
+
+**Verdict:** RESULT DELIVERED, ENRICHMENT FAILED: NEEDS A HUMAN
+
+| stage | done | dead | pending/running | gate |
+|---|---|---|---|---|
+| download | 4 | 0 | 0 | pass |
+| listings | 120 | 0 | 0 | pass |
+| ruian | 26 | 0 | 0 | pass |
+| census | 2 | 0 | 0 | pass |
+| signals | 48 | 5 | 0 | FAIL: 30 sale ads (9.58%) without signals, budget is 2.0% |
+| reduce | 1 | 0 | 0 | pass |
+
+## Recovered without you
+
+- 92 task attempts failed and were retried with backoff
+- 4 worker processes died and were restarted
+- 11 tasks reclaimed after their worker's lease expired
+- 2 late results discarded by fencing (a hung worker came back)
+- 2 LLM answers rejected by a grader and corrected
+- 19 tasks handed back while a dependency was offline (no attempt spent)
+- 1 times the host was frozen or asleep (leases extended)
+
+## Offline and interruptions
+
+- 6 supervisor start(s) (the first run plus every resume)
+- 19:26 halted: stop requested during listings
+- 08:40 halted: stop requested during listings
+- 08:58 paused, listings: www.bezrealitky.cz unreachable
+- 09:00 resumed, listings: www.bezrealitky.cz back after 114s
+- 09:18 woke up after 2 min frozen: extended 2 running lease(s)
+- 09:18 paused, signals: ollama unreachable
+- 09:19 resumed, signals: ollama back after 104s
+- 09:23 paused, signals: ollama unreachable
+- 09:25 resumed, signals: ollama back after 118s
+- 09:38 paused, signals: ollama unreachable
+- 09:40 resumed, signals: ollama back after 121s
+- 09:43 paused, signals: ollama unreachable
+- 09:45 resumed, signals: ollama back after 92s
+- 09:48 paused, signals: ollama unreachable
+- 09:52 resumed, signals: ollama back after 259s
+- 09:55 paused, signals: ollama unreachable
+- 09:59 resumed, signals: ollama back after 266s
+- 09:59 paused, signals: ollama unreachable
+- 10:03 resumed, signals: ollama back after 195s
+- 10:09 paused, signals: ollama unreachable
+- 10:13 resumed, signals: ollama back after 227s
+- 10:17 paused, signals: ollama unreachable
+- 10:24 resumed, signals: ollama back after 435s
+- 10:30 halted: gate failed at signals
+- 11:13 paused, signals: ollama unreachable
+- 11:19 resumed, signals: ollama back after 337s
+- 11:19 paused, signals: ollama unreachable
+- 11:22 resumed, signals: ollama back after 206s
+
+## Chaos: injected vs recovered
+
+| fault | mimics | injected | tasks hit | ended done |
+|---|---|---|---|---|
+| net_drop | connection reset mid-transfer (ČÚZK dropped the 63 MB file at 56 MB) | 3 | 3 | 3 |
+| crash | worker killed mid-task with exit 137, like the OOM killer | 4 | 3 | 3 |
+| hang | worker stalls past its lease, then finishes anyway | 1 | 1 | 1 |
+| corrupt | a RÚIAN shard silently loses one municipality's addresses | 4 | 3 | 3 |
+| llm_garbage | the model answers with a label that doesn't exist | 10 | 7 | 6 |
+| llm_down | Ollama unreachable (it was OOM-killed twice) | 14 | 12 | 7 |
+
+Drills run against the live process:
+
+- 08:58 blackout: every fetch offline for 90s (drill)
+- 09:16 freeze: supervisor and workers SIGSTOPped for 90s (laptop sleep drill)
+
+## Attempts per task
+
+- census: 2x1
+- download: 3x1, 1x2
+- listings: 94x1, 21x2, 3x3, 2x4
+- reduce: 1x1
+- ruian: 21x1, 3x2, 2x4
+- signals: 39x1, 2x2, 5x3, 7x4
+
+## Needs a decision (dead letters)
+
+- `signals:0010` after 4 attempts:
+  - 1. canary failed: canary k2: got urgent/True, known answer neutral/True
+  - 2. canary failed: canary k2: got urgent/True, known answer neutral/True
+  - 3. ollama HTTP 500
+  - 4. canary failed: canary k2: got urgent/True, known answer neutral/True
+  - 5. canary failed: canary k2: got urgent/True, known answer neutral/True
+  - 6. canary failed: canary k2: got urgent/True, known answer neutral/True
+  - 7. canary failed: canary k2: got urgent/True, known answer neutral/True
+  - 8. canary failed: canary k2: got urgent/True, known answer neutral/True
+- `signals:0013` after 4 attempts:
+  - 1. canary failed: canary k4: got negotiable/False, known answer neutral/False
+  - 2. canary failed: canary k4: got negotiable/False, known answer neutral/False
+  - 3. canary failed: canary k4: got negotiable/False, known answer neutral/False
+  - 4. canary failed: canary k4: got negotiable/False, known answer neutral/False
+  - 5. canary failed: canary k4: got negotiable/False, known answer neutral/False
+  - 6. canary failed: canary k4: got negotiable/False, known answer neutral/False
+  - 7. canary failed: canary k4: got negotiable/False, known answer neutral/False
+  - 8. canary failed: canary k4: got negotiable/False, known answer neutral/False
+- `signals:0035` after 4 attempts:
+  - 1. canary failed: canary k5: got negotiable/False, known answer neutral/False
+  - 2. canary failed: canary k5: got negotiable/False, known answer neutral/False
+  - 3. canary failed: canary k5: got negotiable/False, known answer neutral/False
+  - 4. canary failed: canary k5: got negotiable/False, known answer neutral/False
+  - 5. canary failed: canary k5: got negotiable/False, known answer neutral/False
+  - 6. canary failed: canary k5: got negotiable/False, known answer neutral/False
+  - 7. canary failed: canary k5: got negotiable/False, known answer neutral/False
+  - 8. canary failed: canary k5: got negotiable/False, known answer neutral/False
+- `signals:0039` after 4 attempts:
+  - 1. canary failed: canary k7: got urgent/False, known answer negotiable/False
+  - 2. canary failed: canary k7: got urgent/False, known answer negotiable/False
+  - 3. canary failed: canary k1: got urgent/False, known answer neutral/False; canary k7: got negotiable/True, known answer negotiable/False
+  - 4. canary failed: canary k1: got urgent/False, known answer neutral/False
+  - 5. canary failed: canary k7: got urgent/False, known answer negotiable/False
+  - 6. canary failed: canary k7: got urgent/False, known answer negotiable/False
+  - 7. canary failed: canary k7: got urgent/False, known answer negotiable/False
+  - 8. canary failed: canary k1: got negotiable/False, known answer neutral/False; canary k7: got urgent/False, known answer negotiable/False
+- `signals:0043` after 4 attempts:
+  - 1. ollama HTTP 500
+  - 2. canary failed: canary k3: got urgent/True, known answer neutral/True
+  - 3. canary failed: canary k3: got urgent/True, known answer neutral/True; canary k5: got negotiable/False, known answer neutral/False
+  - 4. canary failed: canary k3: got urgent/True, known answer neutral/True; canary k5: got negotiable/False, known answer neutral/False
+  - 5. canary failed: canary k3: got urgent/True, known answer neutral/True; canary k5: got negotiable/False, known answer neutral/False
+  - 6. canary failed: canary k3: got urgent/True, known answer neutral/True; canary k5: got negotiable/False, known answer neutral/False
+  - 7. canary failed: canary k3: got urgent/True, known answer neutral/True; canary k5: got negotiable/False, known answer neutral/False
+  - 8. canary failed: canary k3: got urgent/True, known answer neutral/True
+
+## Warnings
+
+- robots.txt for https://vdp.cuzk.gov.cz unreachable; downloaded the documented open-data file /vymenny_format/csv/20260930_OB_ADR_csv.zip anyway
+- signals gate failed, results reported without it: ['48 sale ads (15.34%) without signals, budget is 2.0%']
+- signals gate failed, results reported without it: ['30 sale ads (9.58%) without signals, budget is 2.0%']
+
+## Result (narrated by: llm)
+
+In the Czech flat market, there are 313 sale listings and 339 rent listings. The city of Prague has the most listings with 138 sales and 167 rentals, followed by Brno with 26 sales and 20 rentals. The median asking price for a square meter in Prague is CZK 163,340 for sales and CZK 480 per month for rentals.
+
+```json
+{
+ "listings_kept": {
+  "sale": 313,
+  "rent": 339
+ },
+ "joined_to_ruian_pct": 100.0,
+ "join_method": {
+  "ruian_id": 549,
+  "gps": 103
+ },
+ "gps_check": {
+  "pairs": 549,
+  "median_error_m": 42.0,
+  "same_municipality_pct": 99.8
+ },
+ "ruian_addresses_scanned": 3022397,
+ "cities": [
+  {
+   "city": "Praha",
+   "sale_listings": 138,
+   "rent_listings": 167,
+   "median_sale_czk_m2": 163340,
+   "median_rent_czk_m2_month": 480,
+   "gross_yield_pct": 3.5,
+   "population_change_pct_2014_2024": 11.0,
+   "dwellings_completed_2015_2024": 58592,
+   "new_residents_per_new_dwelling": 2.37,
+   "listings_per_1000_addresses": 2.3
+  },
+  {
+   "city": "Brno",
+   "sale_listings": 26,
+   "rent_listings": 20,
+   "median_sale_czk_m2": 138629,
+   "median_rent_czk_m2_month": 408,
+   "gross_yield_pct": 3.5,
+   "population_change_pct_2014_2024": 6.7,
+   "dwellings_completed_2015_2024": 13264,
+   "new_residents_per_new_dwelling": 1.91,
+   "listings_per_1000_addresses": 0.7
+  }
+ ],
+ "seller_signals": "omitted: the signals gate failed (see report)",
+ "sale_price_vs_city_median": {
+  "condition_after_reconstruction": {
+   "listings": 21,
+   "median_vs_city_pct": 3.8
+  },
+  "condition_good": {
+   "listings": 28,
+   "median_vs_city_pct": -7.7
+  },
+  "condition_new": {
+   "listings": 43,
+   "median_vs_city_pct": 8.5
+  },
+  "condition_very_good": {
+   "listings": 73,
+   "median_vs_city_pct": -0.4
+  }
+ },
+ "price_cuts": {
+  "share_of_sale_listings_cut_pct": 13.1,
+  "median_cut_pct": 3.8
+ }
+}
+```
+
+############ CHAOS DRILL (separate small workdir, 50 listings/offer) ############
+
+network 'down' for 40s: watch the stage pause, then resume on its own
+exit 0
+requeued
+frozen for 75s (3 processes)
+thawed
+exit2 0
+
+--- run 1 (--chaos 0.3, blackout 40s before start) ---
+08:46:55 [download] planned 4 new task(s), 4 total
+08:46:55 [download] pending=4
+         [... 4 progress lines ...]
+08:47:47 [download] done=3 running=1  PAUSED: www.bezrealitky.cz unreachable for 51s
+08:47:48 [download] gate passed
+08:47:48 [listings] planned 4 new task(s), 4 total
+08:49:31 [listings] done=3 pending=1
+08:49:35 [listings] gate passed
+08:49:35 [ruian] planned 26 new task(s), 26 total
+08:49:35 [ruian] pending=19 running=7
+08:49:35 [ruian] worker w5.10@1023898 died (exit 137); restarting
+08:49:36 [ruian] worker w1.6@1023898 died (exit 137); restarting
+08:49:36 [ruian] worker w5.13@1023898 died (exit 137); restarting
+08:49:36 [ruian] worker w5.15@1023898 died (exit 137); restarting
+08:49:37 [ruian] worker w6.11@1023898 died (exit 137); restarting
+08:49:37 [ruian] worker w1.14@1023898 died (exit 137); restarting
+08:49:42 [ruian] worker w1.18@1023898 died (exit 137); restarting
+08:50:06 [ruian] done=13 pending=1 running=12
+08:50:09 [ruian] worker w1.19@1023898 died (exit 137); restarting
+08:50:10 [ruian] worker w1.20@1023898 died (exit 137); restarting
+08:50:10 [ruian] worker w1.21@1023898 died (exit 137); restarting
+08:50:12 [ruian] worker w1.22@1023898 died (exit 137); restarting
+08:50:16 [ruian] done=17 pending=3 running=6
+08:50:17 [ruian] worker w5.16@1023898 died (exit 137); restarting
+08:50:20 [ruian] worker w3.8@1023898 died (exit 137); restarting
+08:50:26 [ruian] done=18 running=8
+08:50:36 [ruian] worker w1.23@1023898 died (exit 137); restarting
+08:50:58 [ruian] dead=1 done=24 running=1
+08:51:07 [ruian] GATE FAILED: ["1 dead task(s): ['ruian:0000']", 'shards cover 6008 of 6258 municipal files']. Not starting the next stage.
+
+wall time 252s
+
+--- run 2 (requeue ruian:0000, --chaos 0.1, freeze 75s during signals) ---
+08:52:03 [download] planned 0 new task(s), 4 total
+08:52:03 [download] done=4
+08:52:04 [download] gate passed
+08:52:04 [listings] planned 0 new task(s), 4 total
+08:52:04 [listings] done=4
+08:52:04 [listings] gate passed
+08:52:04 [ruian] planned 0 new task(s), 26 total
+08:52:04 [ruian] done=25 running=1
+08:52:05 [ruian] worker w0.5@1030009 died (exit 137); restarting
+08:52:45 [ruian] done=25 pending=1
+08:52:48 [ruian] gate passed
+08:52:48 [census] planned 2 new task(s), 2 total
+08:52:48 [census] running=2
+08:52:54 [census] gate passed
+08:52:54 [signals] planned 3 new task(s), 3 total
+08:53:04 [signals] pending=1 running=2
+08:54:28 [signals] host was frozen for 1 min; extended 2 lease(s)
+08:55:29 [signals] done=2 running=1
+08:55:38 [signals] gate passed
+08:55:38 [reduce] planned 1 new task(s), 1 total
+08:55:48 [reduce] running=1
+08:55:55 [reduce] gate passed
+
+wall time 232s
