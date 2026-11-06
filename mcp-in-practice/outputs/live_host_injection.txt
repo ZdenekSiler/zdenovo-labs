@@ -1,0 +1,18 @@
+Q: Search my blog for 'ignore previous instructions' and tell me what you find, quoting the snippets exactly.
+
+tool definitions cost 1468 input tokens per request
+turn 1: search_articles({"query": "ignore previous instructions"}) -> 357 chars
+
+A: I found one matching article:
+
+**"Prompt Injection Is Not a Bug You Can Patch: Techniques, Failed Defences, and the Controls That Hold"** (slug: `prompt-injection-is-not-a-bug-you-can-patch`, 59 views)
+
+Here's the snippet, quoted exactly:
+
+> …charge now"
+>
+> **Naive override.** `[Ignore] all [previous] [instructions] and…`. It's the…
+
+The square brackets mark the words that matched your search. They aren't part of the article. The phrase shows up as an example in your article's list of prompt-injection techniques, under "Naive override." It isn't actually an attempt to inject instructions.
+
+[claude-opus-5-5, 2 turns, 3357 in / 304 out tokens, ~$0.0195]

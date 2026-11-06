@@ -1,0 +1,41 @@
+== 1. three independent read-only layers, each tested alone ==
+plain connection (no protection)         write SUCCEEDED (rolled back)
+layer 1: mode=ro                         OperationalError: attempt to write a readonly database
+layer 2: PRAGMA query_only (rw file)     OperationalError: attempt to write a readonly database
+layer 3: authorizer                      UPDATE posts SET views = views + 1  -> refused by policy: update
+layer 3: authorizer                      SELECT author, body FROM comments   -> refused by policy: read comments.author
+layer 3: authorizer                      ATTACH DATABASE '/tmp/x.db' AS x    -> refused by policy: attach
+layer 3: authorizer                      SELECT load_extension('evil')       -> refused by policy: function load_extension
+
+== 2. the tools, through an in-process client ==
+top_articles     args=['metric', 'limit', 'published_since', 'series_id']  readOnlyHint=True
+article_stats    args=['slug']                                             readOnlyHint=True
+search_articles  args=['query', 'limit']                                   readOnlyHint=True
+list_series      args=[]                                                   readOnlyHint=True
+series_report    args=['series_id']                                        readOnlyHint=True
+blog_summary     args=['published_since']                                  readOnlyHint=True
+
+top_articles(limit=3):
+  1. Notes on prompt caching — 382 views
+  2. Notes on vector search — 290 views
+  3. Observability 101, Part 1 — 258 views
+  note: views are lifetime totals per article (the blog keeps no per-day history), so 'published_since' filters by publish date, not by when the views happened
+
+article_stats('observability-101-part-1'):
+{
+  "slug": "observability-101-part-1",
+  "title": "Observability 101, Part 1",
+  "published": "2026-07-24",
+  "views": 258,
+  "reactions_up": 4,
+  "reactions_down": 0,
+  "comments": 3,
+  "series_id": "observability-101",
+  "series_part": 1,
+  "words": 1159,
+  "reading_minutes": 5.0,
+  "generation_cost_usd": 0.1005,
+  "cost_per_1000_views_usd": 0.3895,
+  "views_rank": 3,
+  "note": "views are lifetime totals per article (the blog keeps no per-day history), so 'published_since' filters by publish date, not by when the views happened"
+}

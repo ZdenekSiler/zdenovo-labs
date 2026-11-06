@@ -1,0 +1,7 @@
+== 1. over HTTP: protocol 2026-07-28 ==
+  1. Notes on prompt caching (382 views)
+  2. Notes on vector search (290 views)
+
+== 2. the same request, arriving with a public Host header ==
+Host: 127.0.0.1:8765           -> HTTP 200 {"jsonrpc":"2.0","id":1,"result":{"cacheScope":"private","resultType":"complete","tools":[
+Host: blog-mcp.example.com     -> HTTP 421 Invalid Host header

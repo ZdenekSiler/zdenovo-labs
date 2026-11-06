@@ -1,0 +1,35 @@
+== blog_summary ==
+61 posts, 5,112 views, 21 reactions, 7 published comments; generation cost $2.88 ($0.56 per 1,000 views); all API spend $3.94
+
+== top_articles(views, 5) ==
+1.  215  2026-07-04  The $0 Startup: How AI Eliminates Your First 3 Hires
+2.  187  2026-07-24  Snowflake vs the Alternatives: BigQuery, Redshift, Databricks, and Teradata Compared
+3.  186  2026-06-25  Token Burn: When Your Enterprise Starts Watching Your AI Usage
+4.  172  2026-07-01  AI-Generated Content That Doesn't Suck: Quality Gates and Human Review
+5.  162  2026-06-25  The Age of the Accidental Builder: AI Is Handing Everyone a Shovel
+
+== naive cost-per-view ranking (gen_cost_usd IS NOT NULL), i.e. the first version ==
+$0.00 generation cost, 122 views  Where Networks Break: Problem Types, the TCP/IP Layers and the Tool for Each
+$0.00 generation cost,  81 views  What Jev Is: A Model That Refuses to Talk
+$0.00 generation cost,  59 views  Prompt Injection Is Not a Bug You Can Patch: Techniques, Failed Defences, and the Controls That Hold
+
+== top_articles(cost_per_view, 3) ==
+1. $0.362 per 1,000 views  (187 views)  Snowflake vs the Alternatives: BigQuery, Redshift, Databricks, and Teradata Compared
+2. $0.439 per 1,000 views  (112 views)  Choosing Your Format: Iceberg vs. Delta Lake vs. Hudi—Head-to-Head Comparison
+3. $0.464 per 1,000 views  (146 views)  The Generic AI Wrapper Tax: Why Vertical Micro-SaaS Wins, Boring Workflows Pay Better
+
+== list_series ==
+  635 views  7 parts  snowflake-deep-dive
+  381 views  4 parts  open-table-formats-for-the-lakehouse-apache-iceberg-delta-lake-and-apache-hudi-o
+  332 views  4 parts  python-dlt-data-load-tool-deep-dive
+  309 views  4 parts  langchain-deep-dive
+  204 views  4 parts  jev-system-one-deep-dive
+  155 views  4 parts  ai-platform-architecture-deep-dive
+  122 views  1 parts  linux-networking-deep-dive
+
+== series_report('jev-system-one-deep-dive') ==
+part 1:  81 views  retention 100%  What Jev Is: A Model That Refuses to Talk
+part 2:  64 views  retention 79%  The Three Primitives: Noul, Choice, Score and the Atomic Question
+part 3:  30 views  retention 37%  Confidence Is a Second Return Value
+part 4:  29 views  retention 36%  Patterns in Python: Fan-Out, Routing and Running Jev in Production
+biggest drop: part 2 → 3: kept 47% of readers

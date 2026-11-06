@@ -1,0 +1,34 @@
+== 1. one MCP tool, as the host hands it to Claude ==
+{
+  "name": "series_report",
+  "description": "Views per part of a series and where readers drop off.",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "series_id": {
+        "description": "Series id, from list_series.",
+        "title": "Series Id",
+        "type": "string"
+      }
+    },
+    "required": [
+      "series_id"
+    ],
+    "title": "series_reportArguments"
+  }
+}
+
+== 2. registering the sandboxed server with Claude Code ==
+cd lab && claude mcp add blog -- "$PWD/sandbox/run.sh" "$PWD/data/fixture.db"
+
+== 3. the same thing as a project .mcp.json ==
+{
+  "mcpServers": {
+    "blog": {
+      "command": "/path/to/lab/sandbox/run.sh",
+      "args": [
+        "/path/to/lab/data/fixture.db"
+      ]
+    }
+  }
+}

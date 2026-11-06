@@ -1,0 +1,31 @@
+== 1. an error message the model never sees ==
+with_value_error  is_error=True -> 'Error executing tool with_value_error'
+with_tool_error   is_error=True -> "Error executing tool with_tool_error: No article 'prompt-cachin'. Did you mean 'notes-on-prompt-caching'?"
+
+== 2. the schema says no before your code runs ==
+top_articles({"limit": 50}) -> is_error=True: limit / Input should be less than or equal to 20 [type=less_than_equal, input_
+top_articles({"metric": "popularity"}) -> is_error=True: metric / Input should be 'views', 'reactions', 'net_reactions' or 'cost_per_vie
+top_articles({"published_since": "last week"}) -> is_error=True: published_since / Input should be a valid date or datetime, input is too short [type=dat
+
+== 3. the data has meaning your tool must encode ==
+naive cost-per-view ranking: [('Postgres for Application Developers, Part 1', 0.0272, 181), ('Observability 101, Part 1', 0.1005, 258), ('Notes on SQLite in production', 0.0553, 112)]
+(the real blog stores 0 for hand-written posts, so they 'won' at $0.00 per view; the tool now ranks gen_cost_usd > 0 only)
+tool note: cost_per_view ranks cheapest first and covers AI-generated articles only (hand-written ones record a cost of 0)
+
+== 4. what each call costs the model's context ==
+tools/list: 6 tools, 9,552 chars as listed; 3,117 chars of it go to the model (name, description, input schema) on EVERY request
+  top_articles     {"limit": 20}                               3,217 chars
+  article_stats    {"slug": "notes-on-redis"}                    474 chars
+  search_articles  {"query": "cache", "limit": 10}             1,942 chars
+  list_series      {}                                            430 chars
+  series_report    {"series_id": "rust-for-pythonistas"}       1,231 chars
+  blog_summary     {}                                            385 chars
+  resource         blog://posts/notes-on-redis                 4,267 chars
+
+== 5. 'just give it SQL': read-only is not the same as safe ==
+naive   SELECT series_id, sum(views) v FROM posts   -> [["observability-101", 606], ["postgres-for-apps", 427]]
+naive   SELECT author, body FROM comments LIMIT 2   -> [["reader95", "Synthetic comment body (private in the real database)."], ["reader288", "Synthetic comment body
+naive   DELETE FROM posts                           -> ERROR Error executing tool query_blog
+guarded SELECT series_id, sum(views) v FROM posts   -> [["observability-101", 606], ["postgres-for-apps", 427]]
+guarded SELECT author, body FROM comments LIMIT 2   -> ERROR Error executing tool query_blog: refused by policy: read comments.author. Allowed: posts (metadata columns, no
+guarded DELETE FROM posts                           -> ERROR Error executing tool query_blog: refused by policy: delete. Allowed: posts (metadata columns, not content) and

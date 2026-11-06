@@ -1,0 +1,40 @@
+protocol: 2026-07-28
+server: hello-blog
+
+== what the model is shown ==
+{
+  "name": "most_read",
+  "description": "The most viewed articles on the blog, most viewed first.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "limit": {
+        "default": 3,
+        "title": "Limit",
+        "type": "integer"
+      }
+    },
+    "title": "most_readArguments"
+  },
+  "outputSchema": {
+    "properties": {
+      "result": {
+        "items": {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        "title": "Result",
+        "type": "array"
+      }
+    },
+    "required": [
+      "result"
+    ],
+    "title": "most_readOutput",
+    "type": "object"
+  }
+}
+
+== tools/call most_read {limit: 3} ==
+content: 3 text blocks, one per list item; first = '{\n  "title": "Notes on prompt caching",\n  "views": 382\n}'
+structuredContent: {"result": [{"title": "Notes on prompt caching", "views": 382}, {"title": "Notes on vector search", "views": 290}, {"title": "Observability 101, Part 1", "views": 258}]}

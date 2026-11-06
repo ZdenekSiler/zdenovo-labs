@@ -1,0 +1,22 @@
+== 1. the probe server, on the host vs in the sandbox ==
+attempt                        host   sandbox  sandbox detail
+identity                       yes    yes      uid=10001 gid=10001
+write next to its own code     yes    no       OSError: [Errno 30] Read-only file system: '/app/sandbox/pwned.txt'
+write to the blog database     yes    no       OperationalError: attempt to write a readonly database
+list your home directory       yes    no       FileNotFoundError: [Errno 2] No such file or directory: '/nonexistent'
+see secret-looking env vars    no     yes      1 visible: GPG_KEY
+open an outbound connection    yes    no       OSError: [Errno 101] Network is unreachable
+resolve DNS                    yes    no       gaierror: [Errno -3] Temporary failure in name resolution
+spawn 100 processes            yes    no       OSError: started 61/100, then: [Errno 11] Resource temporarily unavailable
+fill /tmp with 32 MiB          yes    no       OSError: [Errno 28] No space left on device
+
+-- what the host run could do --
+list your home directory       /home/zdenek: 43 entries; ~/.ssh exists=True
+see secret-looking env vars    PermissionError: no secret-looking variables visible
+write to the blog database     updated 1 row (then rolled back)
+
+== 2. the real server through the sandbox ==
+protocol 2026-07-28, connected in 1.4s, tools: ['top_articles', 'article_stats', 'search_articles', 'list_series', 'series_report', 'blog_summary']
+  1. Notes on prompt caching (382 views)
+  2. Notes on vector search (290 views)
+  3. Observability 101, Part 1 (258 views)

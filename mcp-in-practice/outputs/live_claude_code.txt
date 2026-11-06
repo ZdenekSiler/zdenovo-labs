@@ -1,0 +1,19 @@
+model: claude-opus-5-5
+tools offered: mcp__blog__article_stats, mcp__blog__blog_summary, mcp__blog__list_series, mcp__blog__search_articles, mcp__blog__series_report, mcp__blog__top_articles
+mcp servers: [('blog', 'connected')]
+
+→ mcp__blog__top_articles({"metric": "views", "limit": 1})
+  ← 375 chars
+→ mcp__blog__top_articles({"metric": "cost_per_view", "limit": 3})
+  ← 1050 chars
+
+A: **Most read:** "The $0 Startup: How AI Eliminates Your First 3 Hires" (published 2026-07-04) has 215 lifetime views.
+
+**Cheapest AI-generated articles per reader:**
+1. "Snowflake vs the Alternatives: BigQuery, Redshift, Databricks, and Teradata Compared": $0.000362 per view (187 views)
+2. "Choosing Your Format: Iceberg vs. Delta Lake vs. Hudi—Head-to-Head Comparison": $0.000439 per view (112 views)
+3. "The Generic AI Wrapper Tax: Why Vertical Micro-SaaS Wins, Boring Workflows Pay Better": $0.000464 per view (146 views)
+
+Views are lifetime totals. Hand-written articles show a cost of $0, so they're left out of the cost ranking.
+
+[3 turns, 15.2s, total_cost_usd=0.0538426]

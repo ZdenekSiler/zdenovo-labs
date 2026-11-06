@@ -1,0 +1,27 @@
+Q: Which article on my blog is the most read? Is there a series where readers drop off badly?
+
+tool definitions cost 1468 input tokens per request
+turn 1: top_articles({"limit": 1}) -> 393 chars
+turn 1: list_series({}) -> 1144 chars
+turn 2: series_report({"series_id": "snowflake-deep-dive"}) -> 1779 chars
+turn 2: series_report({"series_id": "open-table-formats-for-the-lakehouse-apache-iceberg-delta-lake-and-apache-hudi-o"}) -> 1128 chars
+turn 2: series_report({"series_id": "python-dlt-data-load-tool-deep-dive"}) -> 1100 chars
+turn 2: series_report({"series_id": "langchain-deep-dive"}) -> 986 chars
+turn 2: series_report({"series_id": "jev-system-one-deep-dive"}) -> 924 chars
+turn 2: series_report({"series_id": "ai-platform-architecture-deep-dive"}) -> 994 chars
+
+A: Your most read article is **"The $0 Startup: How AI Eliminates Your First 3 Hires"**, with **215 views**. It was published 2026-07-04.
+
+**Yes, two series lose a lot of readers:**
+
+1. **Building a Robust AI Platform (LLM Gateways…)** has the steepest drop. Views fall at every part: 67 → 43 → 28 → 17. Only **25%** of Part 1's readers reach Part 4.
+2. **Jev in Python (System One Model)** has the biggest single drop. Views go 81 → 64 → **30** → 29. Between Part 2 and Part 3 ("Confidence Is a Second Return Value"), only 47% of readers carry on. After that, almost everyone who reaches Part 3 also reads Part 4.
+
+**The other series keep their readers:**
+- **dlt** and **Open Table Formats** keep about 99–100% from part to part.
+- **LangChain** keeps 88% by Part 4.
+- **Snowflake** keeps 79–90%. Its last part, the "vs the Alternatives" comparison, gets 187 views, more than twice Part 1's. That suggests people find it on its own rather than by reading the series in order.
+
+One caveat: the view counts are lifetime totals. If the later parts were published recently, they've had less time to collect views, so part of the drop may just be about timing.
+
+[claude-opus-5-5, 3 turns, 9973 in / 936 out tokens, ~$0.0586]
