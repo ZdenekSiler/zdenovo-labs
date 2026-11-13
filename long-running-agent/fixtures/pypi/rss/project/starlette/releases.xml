@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>PyPI recent updates for starlette</title>
+    <link>https://pypi.org/project/starlette/</link>
+    <description>Recent updates to the Python Package Index for starlette</description>
+    <language>en</language>    <item>
+      <title>1.10.0</title>
+      <link>https://pypi.org/project/starlette/1.10.0/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Sat, 24 Oct 2026 15:04:10 GMT</pubDate>
+    </item>    <item>
+      <title>1.9.0</title>
+      <link>https://pypi.org/project/starlette/1.9.0/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Sun, 18 Oct 2026 15:50:31 GMT</pubDate>
+    </item>    <item>
+      <title>1.8.0</title>
+      <link>https://pypi.org/project/starlette/1.8.0/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Tue, 13 Oct 2026 07:54:38 GMT</pubDate>
+    </item>    <item>
+      <title>1.7.0</title>
+      <link>https://pypi.org/project/starlette/1.7.0/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Wed, 23 Sep 2026 07:30:24 GMT</pubDate>
+    </item>    <item>
+      <title>1.6.0</title>
+      <link>https://pypi.org/project/starlette/1.6.0/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Sat, 08 Aug 2026 18:27:56 GMT</pubDate>
+    </item>    <item>
+      <title>1.5.1</title>
+      <link>https://pypi.org/project/starlette/1.5.1/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Sat, 08 Aug 2026 17:01:44 GMT</pubDate>
+    </item>    <item>
+      <title>1.5.0</title>
+      <link>https://pypi.org/project/starlette/1.5.0/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Sat, 08 Aug 2026 07:23:14 GMT</pubDate>
+    </item>    <item>
+      <title>1.4.1</title>
+      <link>https://pypi.org/project/starlette/1.4.1/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Wed, 05 Aug 2026 15:17:24 GMT</pubDate>
+    </item>    <item>
+      <title>1.4.0</title>
+      <link>https://pypi.org/project/starlette/1.4.0/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Wed, 05 Aug 2026 09:36:41 GMT</pubDate>
+    </item>    <item>
+      <title>1.3.1</title>
+      <link>https://pypi.org/project/starlette/1.3.1/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Fri, 12 Jun 2026 09:23:10 GMT</pubDate>
+    </item>    <item>
+      <title>1.3.0</title>
+      <link>https://pypi.org/project/starlette/1.3.0/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Thu, 11 Jun 2026 06:27:40 GMT</pubDate>
+    </item>    <item>
+      <title>1.2.1</title>
+      <link>https://pypi.org/project/starlette/1.2.1/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Sun, 31 May 2026 01:07:50 GMT</pubDate>
+    </item>    <item>
+      <title>1.2.0</title>
+      <link>https://pypi.org/project/starlette/1.2.0/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Thu, 28 May 2026 11:42:48 GMT</pubDate>
+    </item>    <item>
+      <title>1.1.0</title>
+      <link>https://pypi.org/project/starlette/1.1.0/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Sat, 23 May 2026 16:55:39 GMT</pubDate>
+    </item>    <item>
+      <title>1.0.1</title>
+      <link>https://pypi.org/project/starlette/1.0.1/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Thu, 21 May 2026 21:58:56 GMT</pubDate>
+    </item>    <item>
+      <title>1.0.0</title>
+      <link>https://pypi.org/project/starlette/1.0.0/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Sun, 22 Mar 2026 18:29:45 GMT</pubDate>
+    </item>    <item>
+      <title>1.0.0rc1</title>
+      <link>https://pypi.org/project/starlette/1.0.0rc1/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Mon, 23 Feb 2026 22:12:30 GMT</pubDate>
+    </item>    <item>
+      <title>0.52.1</title>
+      <link>https://pypi.org/project/starlette/0.52.1/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Sun, 18 Jan 2026 13:34:09 GMT</pubDate>
+    </item>    <item>
+      <title>0.52.0</title>
+      <link>https://pypi.org/project/starlette/0.52.0/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Sun, 18 Jan 2026 10:07:06 GMT</pubDate>
+    </item>    <item>
+      <title>0.51.0</title>
+      <link>https://pypi.org/project/starlette/0.51.0/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Sat, 10 Jan 2026 20:23:13 GMT</pubDate>
+    </item>    <item>
+      <title>0.50.0</title>
+      <link>https://pypi.org/project/starlette/0.50.0/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Sat, 01 Nov 2025 15:25:25 GMT</pubDate>
+    </item>    <item>
+      <title>0.49.3</title>
+      <link>https://pypi.org/project/starlette/0.49.3/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Sat, 01 Nov 2025 15:12:24 GMT</pubDate>
+    </item>    <item>
+      <title>0.49.2</title>
+      <link>https://pypi.org/project/starlette/0.49.2/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Sat, 01 Nov 2025 11:38:45 GMT</pubDate>
+    </item>    <item>
+      <title>0.49.1</title>
+      <link>https://pypi.org/project/starlette/0.49.1/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Tue, 28 Oct 2025 17:34:09 GMT</pubDate>
+    </item>    <item>
+      <title>0.49.0</title>
+      <link>https://pypi.org/project/starlette/0.49.0/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Tue, 28 Oct 2025 08:11:40 GMT</pubDate>
+    </item>    <item>
+      <title>0.48.0</title>
+      <link>https://pypi.org/project/starlette/0.48.0/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Sat, 13 Sep 2025 08:41:03 GMT</pubDate>
+    </item>    <item>
+      <title>0.47.3</title>
+      <link>https://pypi.org/project/starlette/0.47.3/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Sun, 24 Aug 2025 13:36:40 GMT</pubDate>
+    </item>    <item>
+      <title>0.47.2</title>
+      <link>https://pypi.org/project/starlette/0.47.2/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Sun, 20 Jul 2025 17:31:56 GMT</pubDate>
+    </item>    <item>
+      <title>0.47.1</title>
+      <link>https://pypi.org/project/starlette/0.47.1/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Sat, 21 Jun 2025 04:03:15 GMT</pubDate>
+    </item>    <item>
+      <title>0.47.0</title>
+      <link>https://pypi.org/project/starlette/0.47.0/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Thu, 29 May 2025 15:45:26 GMT</pubDate>
+    </item>    <item>
+      <title>0.46.2</title>
+      <link>https://pypi.org/project/starlette/0.46.2/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Sun, 13 Apr 2025 13:56:16 GMT</pubDate>
+    </item>    <item>
+      <title>0.46.1</title>
+      <link>https://pypi.org/project/starlette/0.46.1/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Sat, 08 Mar 2025 10:55:32 GMT</pubDate>
+    </item>    <item>
+      <title>0.46.0</title>
+      <link>https://pypi.org/project/starlette/0.46.0/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Sat, 22 Feb 2025 17:34:43 GMT</pubDate>
+    </item>    <item>
+      <title>0.45.3</title>
+      <link>https://pypi.org/project/starlette/0.45.3/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Fri, 24 Jan 2025 11:17:34 GMT</pubDate>
+    </item>    <item>
+      <title>0.45.2</title>
+      <link>https://pypi.org/project/starlette/0.45.2/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Sat, 04 Jan 2025 09:54:28 GMT</pubDate>
+    </item>    <item>
+      <title>0.45.1</title>
+      <link>https://pypi.org/project/starlette/0.45.1/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Mon, 30 Dec 2024 21:10:51 GMT</pubDate>
+    </item>    <item>
+      <title>0.45.0</title>
+      <link>https://pypi.org/project/starlette/0.45.0/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Sun, 29 Dec 2024 09:28:02 GMT</pubDate>
+    </item>    <item>
+      <title>0.44.0</title>
+      <link>https://pypi.org/project/starlette/0.44.0/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Sat, 28 Dec 2024 07:32:53 GMT</pubDate>
+    </item>    <item>
+      <title>0.43.0</title>
+      <link>https://pypi.org/project/starlette/0.43.0/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Wed, 25 Dec 2024 15:37:23 GMT</pubDate>
+    </item>    <item>
+      <title>0.42.0</title>
+      <link>https://pypi.org/project/starlette/0.42.0/</link>
+      <description>The little ASGI library that shines.</description>
+<author>maintainer@example.org</author>      <pubDate>Sat, 14 Dec 2024 09:01:44 GMT</pubDate>
+    </item>  </channel>
+</rss>

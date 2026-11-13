@@ -1,0 +1,12 @@
+# crontab -e   (as the user that owns /opt/lrlab)
+#
+# Cron does not run "the 01:00 job". It runs `tick` every 5 minutes, and the scheduler table
+# decides what is due. That is what makes catch-up, jitter and dedupe work: cron only provides
+# a heartbeat.
+#
+# flock -n: if the previous tick is still running (a long night), skip this one instead of
+#           starting a second worker. The lease would make a second worker harmless anyway;
+#           flock just saves the wasted process.
+# CRON_TZ is irrelevant: schedules are stored in UTC.
+
+*/5 * * * * cd /opt/lrlab && flock -n /tmp/lrlab-tick.lock python3 -m lrlab.cli tick --home /var/lib/lrlab --model ollama:llama3.2 >> /var/log/lrlab/tick.log 2>&1

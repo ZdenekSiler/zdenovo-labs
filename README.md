@@ -12,6 +12,7 @@ transcript quoted in an article is produced by the code in its folder.
 | [`prompt-injection/`](prompt-injection/) | post: Prompt Injection Is Not a Bug You Can Patch |
 | [`context-rot/`](context-rot/) | post: Context Rot: Why Your Million-Token Window Is a Budget, Not a Container |
 | [`dark-factory/`](dark-factory/) | post: Show Me Your Dark Factory (Czech flat-market radar, chaos monkeys, offline handling) |
+| [`long-running-agent/`](long-running-agent/) | post: The Harness Is the Product: Building a Long-Running Agent in Python |
 
 Each folder says how to run it. Most labs run fully offline; where something calls a real model
 (and costs money), its README says so. MIT licensed (vendored third-party code keeps its own

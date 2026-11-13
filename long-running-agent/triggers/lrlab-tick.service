@@ -1,0 +1,20 @@
+# /etc/systemd/system/lrlab-tick.service
+# One tick: fire due schedules, then work until the queue is idle, then exit.
+[Unit]
+Description=lrlab scheduler tick + worker
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=lrlab
+WorkingDirectory=/opt/lrlab
+# Keys live in a root-owned env file, not in the unit and not in the agent's workspace.
+EnvironmentFile=/etc/lrlab/env
+ExecStart=/usr/bin/python3 -m lrlab.cli tick --home /var/lib/lrlab --model claude:claude-haiku-5-5
+TimeoutStartSec=45min
+# The worker itself is not the sandbox (the runner process is), but there is no reason to give it more.
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/lrlab
+PrivateTmp=true

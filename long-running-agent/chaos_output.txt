@@ -1,0 +1,159 @@
+
+==============================================================================
+DRILL  kill: SIGKILL the worker in the middle of the PyPI lookups
+==============================================================================
+   worker-a killed (SIGKILL) after 6 lookups; checkpoint holds 21 messages; conversation status='running'
+   waiting for worker-a's lease to expire (2 s)...
+   => parked_human: waiting for reply (model_calls=4, tool_calls=11)
+     ── run start: model=fake:scripted, inbound=0, resumed_messages=21
+        → pypi_releases(package=mistune)
+          ← ok: <untrusted_data source="pypi:mistune"> {"package":"mistune","newest_stable":"3.4.0","newest_prerelease":"3.0.0
+        model (private): 7/16 looked up; next: python-multipart, itsdangerous, httpx, pyyaml.
+        → pypi_releases(package=python-multipart)
+          ← ok: <untrusted_data source="pypi:python-multipart"> {"package":"python-multipart","newest_stable":"0.0.33","newest
+        → pypi_releases(package=itsdangerous)
+          ← ok: <untrusted_data source="pypi:itsdangerous"> {"package":"itsdangerous","newest_stable":"2.2.0","newest_prerelea
+        → pypi_releases(package=httpx)
+          ← ok: <untrusted_data source="pypi:httpx"> {"package":"httpx","newest_stable":"0.28.1","newest_prerelease":"1.0.dev6
+        → pypi_releases(package=pyyaml)
+          ← ok: <untrusted_data source="pypi:pyyaml"> {"package":"pyyaml","newest_stable":"6.0.3","newest_prerelease":"6.0.2rc
+        model (private): 11/16 looked up; next: slowapi, bleach, pygments, idna.
+        → pypi_releases(package=slowapi)
+          ← ok: <untrusted_data source="pypi:slowapi"> {"package":"slowapi","newest_stable":"0.1.10","newest_prerelease":null,
+        → pypi_releases(package=bleach)
+          ← ok: <untrusted_data source="pypi:bleach"> {"package":"bleach","newest_stable":"6.4.0","newest_prerelease":null,"re
+        → pypi_releases(package=pygments)
+          ← ok: <untrusted_data source="pypi:pygments"> {"package":"pygments","newest_stable":"2.21.0","newest_prerelease":nul
+        → pypi_releases(package=idna)
+          ← ok: <untrusted_data source="pypi:idna"> {"package":"idna","newest_stable":"3.20","newest_prerelease":null,"recent_
+        model (private): 15/16 looked up; next: starlette.
+        → pypi_releases(package=starlette)
+          ← ok: <untrusted_data source="pypi:starlette"> {"package":"starlette","newest_stable":"1.10.0","newest_prerelease":"
+        model (private): 3 breaking-looking upgrades; asking before I write anything.
+        → send_to_user(kind=choice, expects_reply=True, text=3 dependencies have a major/0.x-minor bu…, options=['pin', 'upgrade-branch', 'ignore'])
+        ✉ to user [choice]: 3 dependencies have a major/0.x-minor bump: fastapi 0.135.1 -> 0.162.5, uvicorn 0.41.0 -> 0.54.0, anthropic 0.84.0 -> 2.8.0. What should I do?  options=['pin', 'upgrade-branch', 'ignore']
+          ← ok: delivered. The user's reply will arrive as a new message; end your turn now.
+     ── run outcome: parked_human (waiting for reply)
+   feeds fetched by worker-b: 10 of 16; fetched by both workers: none
+
+==============================================================================
+DRILL  zombie: a paused worker wakes up after someone else took over
+==============================================================================
+   worker-a claims: fence=1; then stalls (GC pause, laptop lid, SIGSTOP)...
+   worker-b claims after the lease expired: fence=2
+   worker-a's checkpoint write is refused: conv_16cd7460d010: fence 1 is stale (current 2)
+   worker-a renew -> False, worker-b renew -> True
+
+==============================================================================
+DRILL  model: two 429s, then a provider outage, then recovery
+==============================================================================
+        ⚡ model error (attempt 1): HTTP 429: rate limit exceeded
+        ⚡ model error (attempt 2): HTTP 429: rate limit exceeded
+        model (private): Start: read the lockfile and last night's snapshot.
+        model (private): Check what notes exist from earlier runs.
+          ✗ denied: 'run_command' needs 'shell' permission, which operator runs do not have. Use another tool.
+        model (private): Shell is not allowed on scheduled runs; use list_files instead.
+        model (private): 0/16 looked up; next: fastapi, uvicorn, jinja2, anthropic.
+        model (private): 4/16 looked up; next: python-dotenv, apscheduler, mistune, python-multipart.
+        model (private): 8/16 looked up; next: itsdangerous, httpx, pyyaml, slowapi.
+        model (private): 12/16 looked up; next: bleach, pygments, idna, starlette.
+        model (private): 3 breaking-looking upgrades; asking before I write anything.
+        ✉ to user [choice]: 3 dependencies have a major/0.x-minor bump: fastapi 0.135.1 -> 0.162.5, uvicorn 0.41.0 -> 0.54.0, anthropic 0.84.0 -> 2.8.0. What should I do?  options=['pin', 'upgrade-branch', 'ignore']
+     ── run outcome: parked_human (waiting for reply)
+   backoff sleeps: [0.01, 0.02]  => parked_human
+        ⚡ model error (attempt 1): HTTP 429: rate limit exceeded
+        ⚡ model error (attempt 2): HTTP 429: rate limit exceeded
+        ⚡ model error (attempt 3): HTTP 429: rate limit exceeded
+        ⚡ model error (attempt 4): HTTP 429: rate limit exceeded
+     ── run outcome: parked_retry (model unavailable after 4 attempts: HTTP 429: rate limit exceeded)
+   all retries failed => parked_retry, retry in 0.3s (conversation status 'parked_retry')
+   claim before retry_at -> None
+   => done: final (model_calls=2, tool_calls=3)
+        model (private): All looked up. Writing the report and the snapshot.
+        model (private): Done. Sending the report.
+        ✉ to user [file]: Nightly dependency watch: 3 major, 7 minor/patch, report attached.
+     ── run outcome: done (final)
+
+==============================================================================
+DRILL  network: PyPI goes away mid-run, comes back later
+==============================================================================
+   [chaos] fixture PyPI on port 36127 is DOWN
+   => parked_retry: pypi_releases: network: <urlopen error [Errno 111] Connection refused> (model_calls=5, tool_calls=9)
+        model (private): Start: read the lockfile and last night's snapshot.
+        model (private): Check what notes exist from earlier runs.
+          ✗ denied: 'run_command' needs 'shell' permission, which operator runs do not have. Use another tool.
+        model (private): Shell is not allowed on scheduled runs; use list_files instead.
+        model (private): 0/16 looked up; next: fastapi, uvicorn, jinja2, anthropic.
+        model (private): 4/16 looked up; next: python-dotenv, apscheduler, mistune, python-multipart.
+          ⚡ transient: network: <urlopen error [Errno 111] Connection refused>
+     ── run outcome: parked_retry (pypi_releases: network: <urlopen error [Errno 111] Connection refused>)
+   conversation status: 'parked_retry'
+   [chaos] fixture PyPI is back on port 36127
+   => parked_human: waiting for reply (model_calls=3, tool_calls=12)
+        model (private): 8/16 looked up; next: itsdangerous, httpx, pyyaml, slowapi.
+        model (private): 12/16 looked up; next: bleach, pygments, idna, starlette.
+        model (private): 3 breaking-looking upgrades; asking before I write anything.
+        ✉ to user [choice]: 3 dependencies have a major/0.x-minor bump: fastapi 0.135.1 -> 0.162.5, uvicorn 0.41.0 -> 0.54.0, anthropic 0.84.0 -> 2.8.0. What should I do?  options=['pin', 'upgrade-branch', 'ignore']
+     ── run outcome: parked_human (waiting for reply)
+
+==============================================================================
+DRILL  hang: a lookup takes forever; the computer is killed, not the conversation
+==============================================================================
+        model (private): Start: read the lockfile and last night's snapshot.
+        model (private): Check what notes exist from earlier runs.
+          ✗ denied: 'run_command' needs 'shell' permission, which operator runs do not have. Use another tool.
+        model (private): Shell is not allowed on scheduled runs; use list_files instead.
+        model (private): 0/16 looked up; next: fastapi, uvicorn, jinja2, anthropic.
+          ⚡ transient: tool timed out after 0.5s; computer restarted
+     ── run outcome: parked_retry (pypi_releases: tool timed out after 0.5s; computer restarted)
+   => parked_retry; computer restarts so far: 1
+
+==============================================================================
+DRILL  budget: three model turns allowed; the job needs eight
+==============================================================================
+   => parked_budget: turn budget (3) used up (model_calls=3, tool_calls=4)
+        model (private): Start: read the lockfile and last night's snapshot.
+        model (private): Check what notes exist from earlier runs.
+          ✗ denied: 'run_command' needs 'shell' permission, which operator runs do not have. Use another tool.
+        model (private): Shell is not allowed on scheduled runs; use list_files instead.
+        ✉ to user [alert]: I paused the job: turn budget (3) used up. Progress is saved in notes/progress.md. Reply 'continue' to grant another budget, or 'stop'.
+     ── run outcome: parked_budget (turn budget (3) used up)
+   the human replies 'continue' (a new budget of 3 turns)...
+   => parked_budget: turn budget (3) used up (model_calls=3, tool_calls=12)
+        model (private): 0/16 looked up; next: fastapi, uvicorn, jinja2, anthropic.
+        model (private): 4/16 looked up; next: python-dotenv, apscheduler, mistune, python-multipart.
+        model (private): 8/16 looked up; next: itsdangerous, httpx, pyyaml, slowapi.
+        ✉ to user [alert]: I paused the job: turn budget (3) used up. Progress is saved in notes/progress.md. Reply 'continue' to grant another budget, or 'stop'.
+     ── run outcome: parked_budget (turn budget (3) used up)
+
+==============================================================================
+DRILL  done: the model says final before doing the work
+==============================================================================
+   => parked_human: waiting for reply (model_calls=9, tool_calls=22)
+        model (private): Looks fine, wrapping up.
+          ✗ done check: report.md does not exist yet
+        model (private): Start: read the lockfile and last night's snapshot.
+        model (private): Check what notes exist from earlier runs.
+          ✗ denied: 'run_command' needs 'shell' permission, which operator runs do not have. Use another tool.
+        model (private): Shell is not allowed on scheduled runs; use list_files instead.
+        model (private): 0/16 looked up; next: fastapi, uvicorn, jinja2, anthropic.
+        model (private): 4/16 looked up; next: python-dotenv, apscheduler, mistune, python-multipart.
+        model (private): 8/16 looked up; next: itsdangerous, httpx, pyyaml, slowapi.
+        model (private): 12/16 looked up; next: bleach, pygments, idna, starlette.
+        model (private): 3 breaking-looking upgrades; asking before I write anything.
+        ✉ to user [choice]: 3 dependencies have a major/0.x-minor bump: fastapi 0.135.1 -> 0.162.5, uvicorn 0.41.0 -> 0.54.0, anthropic 0.84.0 -> 2.8.0. What should I do?  options=['pin', 'upgrade-branch', 'ignore']
+     ── run outcome: parked_human (waiting for reply)
+   messages the user actually received: ['choice']
+
+==============================================================================
+DRILL  secret: the token goes to the vault; the model only ever sees a handle
+==============================================================================
+   => parked_human: waiting for reply (model_calls=1, tool_calls=1)
+        model (private): I need a token to open the upgrade PR.
+        ✉ to user [secret]: Paste a fine-grained GitHub token with contents:write on zdenovo.
+     ── run outcome: parked_human (waiting for reply)
+   the user pastes ghp_xxxx… into the secure prompt
+   => quiet: no tool calls (model_calls=1, tool_calls=0)
+        model (private): Got it: [the user entered the secret; it is stored as secret://github_token]
+     ── run outcome: quiet (no tool calls)
+   token in checkpoint or event log: False; in vault: True

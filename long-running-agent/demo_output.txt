@@ -1,0 +1,170 @@
+==============================================================================
+SCENE 1  01:00 UTC: the schedule fires (cron calls `tick` every 5 minutes)
+==============================================================================
+  tick 00:55:00 -> nothing due
+  tick 01:00:30 -> [{'schedule': 'nightly-deps', 'fire_time': '2026-11-12T01:00:00+00:00', 'accepted': True, 'reason': 'queued', 'skipped_missed': 0}]
+  second host fires the same slot -> duplicate
+  gateway accepted schedule from schedule:nightly-deps (provenance=operator)
+
+==============================================================================
+SCENE 2  night: the worker claims the conversation and runs the harness
+==============================================================================
+  [conv_0b6c6fd88a0f] parked_human: model_calls=8 tool_calls=21
+  ── run start: model=fake:scripted, inbound=1, resumed_messages=0
+     model (private): Start: read the lockfile and last night's snapshot.
+     → read_file(path=lockfile.txt)
+       ← ok: {"path":"lockfile.txt","content":"# zdenovo backend direct dependencies, versions from uv.lock (snapshot 2026-
+     → read_file(path=notes/last_seen.json)
+       ← ERROR: error: FileNotFoundError: notes/last_seen.json does not exist
+     model (private): Check what notes exist from earlier runs.
+     → run_command(argv=['ls', 'notes'])
+       ✗ denied: 'run_command' needs 'shell' permission, which operator runs do not have. Use another tool.
+     model (private): Shell is not allowed on scheduled runs; use list_files instead.
+     → list_files(path=.)
+       ← ok: {"path":".","files":["lockfile.txt","notes/progress.md"]}
+     model (private): 0/16 looked up; next: fastapi, uvicorn, jinja2, anthropic.
+     → pypi_releases(package=fastapi)
+       ← ok: <untrusted_data source="pypi:fastapi"> {"package":"fastapi","newest_stable":"0.162.5","newest_prerelease":null
+     → pypi_releases(package=uvicorn)
+       ← ok: <untrusted_data source="pypi:uvicorn"> {"package":"uvicorn","newest_stable":"0.54.0","newest_prerelease":null,
+     → pypi_releases(package=jinja2)
+       ← ok: <untrusted_data source="pypi:jinja2"> {"package":"jinja2","newest_stable":"3.1.6","newest_prerelease":"3.0.0rc
+     → pypi_releases(package=anthropic)
+       ← ok: <untrusted_data source="pypi:anthropic"> {"package":"anthropic","newest_stable":"2.8.0","newest_prerelease":nu
+     model (private): 4/16 looked up; next: python-dotenv, apscheduler, mistune, python-multipart.
+     → pypi_releases(package=python-dotenv)
+       ← ok: <untrusted_data source="pypi:python-dotenv"> {"package":"python-dotenv","newest_stable":"1.2.4","newest_prerel
+     → pypi_releases(package=apscheduler)
+       ← ok: <untrusted_data source="pypi:apscheduler"> {"package":"apscheduler","newest_stable":"3.11.3","newest_prereleas
+     → pypi_releases(package=mistune)
+       ← ok: <untrusted_data source="pypi:mistune"> {"package":"mistune","newest_stable":"3.4.0","newest_prerelease":"3.0.0
+     → pypi_releases(package=python-multipart)
+       ← ok: <untrusted_data source="pypi:python-multipart"> {"package":"python-multipart","newest_stable":"0.0.33","newest
+     model (private): 8/16 looked up; next: itsdangerous, httpx, pyyaml, slowapi.
+     → pypi_releases(package=itsdangerous)
+       ← ok: <untrusted_data source="pypi:itsdangerous"> {"package":"itsdangerous","newest_stable":"2.2.0","newest_prerelea
+     → pypi_releases(package=httpx)
+       ← ok: <untrusted_data source="pypi:httpx"> {"package":"httpx","newest_stable":"0.28.1","newest_prerelease":"1.0.dev6
+     → pypi_releases(package=pyyaml)
+       ← ok: <untrusted_data source="pypi:pyyaml"> {"package":"pyyaml","newest_stable":"6.0.3","newest_prerelease":"6.0.2rc
+     → pypi_releases(package=slowapi)
+       ← ok: <untrusted_data source="pypi:slowapi"> {"package":"slowapi","newest_stable":"0.1.10","newest_prerelease":null,
+     model (private): 12/16 looked up; next: bleach, pygments, idna, starlette.
+     → pypi_releases(package=bleach)
+       ← ok: <untrusted_data source="pypi:bleach"> {"package":"bleach","newest_stable":"6.4.0","newest_prerelease":null,"re
+     → pypi_releases(package=pygments)
+       ← ok: <untrusted_data source="pypi:pygments"> {"package":"pygments","newest_stable":"2.21.0","newest_prerelease":nul
+     → pypi_releases(package=idna)
+       ← ok: <untrusted_data source="pypi:idna"> {"package":"idna","newest_stable":"3.20","newest_prerelease":null,"recent_
+     → pypi_releases(package=starlette)
+       ← ok: <untrusted_data source="pypi:starlette"> {"package":"starlette","newest_stable":"1.10.0","newest_prerelease":"
+     model (private): 3 breaking-looking upgrades; asking before I write anything.
+     → send_to_user(kind=choice, expects_reply=True, text=3 dependencies have a major/0.x-minor bu…, options=['pin', 'upgrade-branch', 'ignore'])
+     ✉ to user [choice]: 3 dependencies have a major/0.x-minor bump: fastapi 0.135.1 -> 0.162.5, uvicorn 0.41.0 -> 0.54.0, anthropic 0.84.0 -> 2.8.0. What should I do?  options=['pin', 'upgrade-branch', 'ignore']
+       ← ok: delivered. The user's reply will arrive as a new message; end your turn now.
+  ── run outcome: parked_human (waiting for reply)
+  deliveries (every app renders the same public event):
+  [terminal] choice: 3 dependencies have a major/0.x-minor bump: fastapi 0.135.1 -> 0.162.5, uvicorn 0.41.0 -> 0.54.0, anthropic 0.84.0 -> 2.8.0. What should I do?  options=pin | upgrade-branch | ignore
+  conversation state: {'status': 'parked_human', 'waiting_for': {'kind': 'choice', 'options': ['pin', 'upgrade-branch', 'ignore']}, 'fence': 1}
+
+==============================================================================
+SCENE 3  07:40: replies arrive through the signed webhook
+==============================================================================
+  forged signature  -> unauthenticated
+  replayed (1h old) -> unauthenticated
+  real reply        -> queued
+  same reply again  -> duplicate
+  [conv_0b6c6fd88a0f] done: model_calls=2 tool_calls=3
+  gateway REJECTED webhook from zdenek: unauthenticated
+  gateway REJECTED webhook from zdenek: unauthenticated
+  gateway accepted webhook from zdenek (provenance=user)
+  ── run start: model=fake:scripted, inbound=1, resumed_messages=30
+     model (private): All looked up. Writing the report and the snapshot.
+     → write_file(path=report.md, content=# Dependency watch
+
+3 major, 4 minor, 3 …)
+       ← ok: {"path":"report.md","bytes":805}
+     → write_file(path=notes/last_seen.json, content={
+ "fastapi": "0.162.5",
+ "uvicorn": "0.…)
+       ← ok: {"path":"notes/last_seen.json","bytes":367}
+     model (private): Done. Sending the report.
+     → send_to_user(kind=file, path=report.md, final=True, text=Nightly dependency watch: 3 major, 7 min…)
+     ✉ to user [file]: Nightly dependency watch: 3 major, 7 minor/patch, report attached.
+       ← ok: delivered.
+  ── run outcome: done (final)
+  [terminal] file: Nightly dependency watch: 3 major, 7 minor/patch, report attached.  (+ report.md, 805 chars)
+  model calls this run: 2 (the final send_to_user ended the run; no extra model call to say 'done')
+
+  report.md:
+    # Dependency watch
+    
+    3 major, 4 minor, 3 patch, 6 unchanged.
+    
+    | package | locked | latest | change |
+    |---|---|---|---|
+    | fastapi | 0.135.1 | 0.162.5 | major |
+    | uvicorn | 0.41.0 | 0.54.0 | major |
+    | jinja2 | 3.1.6 | 3.1.6 | same |
+    | anthropic | 0.84.0 | 2.8.0 | major |
+    | python-dotenv | 1.2.2 | 1.2.4 | patch |
+    | apscheduler | 3.11.2 | 3.11.3 | patch |
+    | mistune | 3.3.4 | 3.4.0 | minor |
+    | python-multipart | 0.0.32 | 0.0.33 | patch |
+    | itsdangerous | 2.2.0 | 2.2.0 | same |
+    | httpx | 0.28.1 | 0.28.1 | same |
+    | pyyaml | 6.0.3 | 6.0.3 | same |
+    | slowapi | 0.1.10 | 0.1.10 | same |
+    | bleach | 6.4.0 | 6.4.0 | same |
+    | pygments | 2.20.0 | 2.21.0 | minor |
+    | idna | 3.18 | 3.20 | minor |
+    | starlette | 1.3.1 | 1.10.0 | minor |
+    
+    
+    Decision: upgrade-branch (fastapi, uvicorn, anthropic), answered by the user.
+    
+==============================================================================
+SCENE 4  next night, 01:00: nothing new on PyPI
+==============================================================================
+  tick -> [{'schedule': 'nightly-deps', 'fire_time': '2026-11-13T01:00:00+00:00', 'accepted': True, 'reason': 'queued', 'skipped_missed': 0}]
+  [conv_f50cf77becd7] quiet: model_calls=8 tool_calls=20
+     model (private): Start: read the lockfile and last night's snapshot.
+     model (private): Check what notes exist from earlier runs.
+       ✗ denied: 'run_command' needs 'shell' permission, which operator runs do not have. Use another tool.
+     model (private): Shell is not allowed on scheduled runs; use list_files instead.
+     model (private): 0/16 looked up; next: fastapi, uvicorn, jinja2, anthropic.
+     model (private): 4/16 looked up; next: python-dotenv, apscheduler, mistune, python-multipart.
+     model (private): 8/16 looked up; next: itsdangerous, httpx, pyyaml, slowapi.
+     model (private): 12/16 looked up; next: bleach, pygments, idna, starlette.
+     model (private): Nothing changed since the last run. Staying quiet.
+  ── run outcome: quiet (no tool calls)
+  messages sent to the user tonight: 0
+
+==============================================================================
+SCENE 5  the laptop slept through three nights; it wakes at 08:00 on day 5
+==============================================================================
+  tick -> [{'schedule': 'nightly-deps', 'fire_time': '2026-11-16T01:00:00+00:00', 'accepted': True, 'reason': 'queued', 'skipped_missed': 2}]
+  [conv_31be94cf445f] quiet: model_calls=8 tool_calls=20
+     model (private): Start: read the lockfile and last night's snapshot.
+     model (private): Check what notes exist from earlier runs.
+       ✗ denied: 'run_command' needs 'shell' permission, which operator runs do not have. Use another tool.
+     model (private): Shell is not allowed on scheduled runs; use list_files instead.
+     model (private): 0/16 looked up; next: fastapi, uvicorn, jinja2, anthropic.
+     model (private): 4/16 looked up; next: python-dotenv, apscheduler, mistune, python-multipart.
+     model (private): 8/16 looked up; next: itsdangerous, httpx, pyyaml, slowapi.
+     model (private): 12/16 looked up; next: bleach, pygments, idna, starlette.
+     model (private): Nothing changed since the last run. Staying quiet.
+  ── run outcome: quiet (no tool calls)
+
+==============================================================================
+SCENE 6  live view: the same conversation over SSE
+==============================================================================
+  sse: [choice] 3 dependencies have a major/0.x-minor bump: fastapi 0.135.1 -> 0.162.5, uvicorn 0.41.0 -> 
+  sse: [file] Nightly dependency watch: 3 major, 7 minor/patch, report attached.
+
+TOTALS
+  conversations: 3, statuses: ['done', 'done', 'done']
+  feed fetches per package (per-night cache + journal => one fetch per package per night run): [3] over 16 packages
+  robots.txt fetches: 1
+  redactions applied: 39
+  mail files: 2, chat lines: 2

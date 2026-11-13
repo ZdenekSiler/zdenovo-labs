@@ -1,0 +1,16 @@
+# /etc/systemd/system/lrlab-tick.timer
+#   systemctl enable --now lrlab-tick.timer
+#   systemctl list-timers lrlab-tick.timer
+[Unit]
+Description=lrlab tick every 5 minutes
+
+[Timer]
+OnCalendar=*:0/5
+# Persistent: if the machine was off when a tick was due, run one tick at boot. The scheduler's
+# catch-up policy (once / all / skip) then decides how many missed nights that tick replays.
+Persistent=true
+RandomizedDelaySec=30
+# A oneshot service cannot overlap itself: systemd will not start the unit while it is running.
+
+[Install]
+WantedBy=timers.target

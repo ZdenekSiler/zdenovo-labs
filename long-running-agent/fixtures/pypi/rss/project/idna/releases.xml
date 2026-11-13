@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>PyPI recent updates for idna</title>
+    <link>https://pypi.org/project/idna/</link>
+    <description>Recent updates to the Python Package Index for idna</description>
+    <language>en</language>    <item>
+      <title>3.20</title>
+      <link>https://pypi.org/project/idna/3.20/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Thu, 17 Sep 2026 14:11:03 GMT</pubDate>
+    </item>    <item>
+      <title>3.19</title>
+      <link>https://pypi.org/project/idna/3.19/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Tue, 18 Aug 2026 05:14:22 GMT</pubDate>
+    </item>    <item>
+      <title>3.18</title>
+      <link>https://pypi.org/project/idna/3.18/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Tue, 02 Jun 2026 14:34:06 GMT</pubDate>
+    </item>    <item>
+      <title>3.17</title>
+      <link>https://pypi.org/project/idna/3.17/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Thu, 28 May 2026 14:32:37 GMT</pubDate>
+    </item>    <item>
+      <title>3.16</title>
+      <link>https://pypi.org/project/idna/3.16/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Fri, 22 May 2026 00:16:16 GMT</pubDate>
+    </item>    <item>
+      <title>3.15</title>
+      <link>https://pypi.org/project/idna/3.15/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Tue, 12 May 2026 22:45:55 GMT</pubDate>
+    </item>    <item>
+      <title>3.14</title>
+      <link>https://pypi.org/project/idna/3.14/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Sun, 10 May 2026 20:32:14 GMT</pubDate>
+    </item>    <item>
+      <title>3.13</title>
+      <link>https://pypi.org/project/idna/3.13/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Wed, 22 Apr 2026 16:42:40 GMT</pubDate>
+    </item>    <item>
+      <title>3.12</title>
+      <link>https://pypi.org/project/idna/3.12/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Tue, 21 Apr 2026 13:32:47 GMT</pubDate>
+    </item>    <item>
+      <title>3.11</title>
+      <link>https://pypi.org/project/idna/3.11/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Sun, 12 Oct 2025 14:55:18 GMT</pubDate>
+    </item>    <item>
+      <title>3.10</title>
+      <link>https://pypi.org/project/idna/3.10/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Sun, 15 Sep 2024 18:07:37 GMT</pubDate>
+    </item>    <item>
+      <title>3.9</title>
+      <link>https://pypi.org/project/idna/3.9/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Sat, 14 Sep 2024 02:58:28 GMT</pubDate>
+    </item>    <item>
+      <title>3.8</title>
+      <link>https://pypi.org/project/idna/3.8/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Fri, 23 Aug 2024 16:01:49 GMT</pubDate>
+    </item>    <item>
+      <title>3.7</title>
+      <link>https://pypi.org/project/idna/3.7/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Thu, 11 Apr 2024 03:34:41 GMT</pubDate>
+    </item>    <item>
+      <title>3.6</title>
+      <link>https://pypi.org/project/idna/3.6/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Sat, 25 Nov 2023 15:40:52 GMT</pubDate>
+    </item>    <item>
+      <title>3.5</title>
+      <link>https://pypi.org/project/idna/3.5/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Fri, 24 Nov 2023 18:07:03 GMT</pubDate>
+    </item>    <item>
+      <title>3.4</title>
+      <link>https://pypi.org/project/idna/3.4/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Wed, 14 Sep 2022 00:24:23 GMT</pubDate>
+    </item>    <item>
+      <title>3.3</title>
+      <link>https://pypi.org/project/idna/3.3/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Tue, 12 Oct 2021 23:33:38 GMT</pubDate>
+    </item>    <item>
+      <title>3.2</title>
+      <link>https://pypi.org/project/idna/3.2/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Sat, 29 May 2021 16:53:30 GMT</pubDate>
+    </item>    <item>
+      <title>3.1</title>
+      <link>https://pypi.org/project/idna/3.1/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Mon, 04 Jan 2021 16:20:02 GMT</pubDate>
+    </item>    <item>
+      <title>3.0</title>
+      <link>https://pypi.org/project/idna/3.0/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Fri, 01 Jan 2021 05:58:22 GMT</pubDate>
+    </item>    <item>
+      <title>2.10</title>
+      <link>https://pypi.org/project/idna/2.10/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Sat, 27 Jun 2020 23:45:03 GMT</pubDate>
+    </item>    <item>
+      <title>2.9</title>
+      <link>https://pypi.org/project/idna/2.9/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Mon, 17 Feb 2020 07:07:32 GMT</pubDate>
+    </item>    <item>
+      <title>2.8</title>
+      <link>https://pypi.org/project/idna/2.8/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Tue, 04 Dec 2018 17:11:30 GMT</pubDate>
+    </item>    <item>
+      <title>2.7</title>
+      <link>https://pypi.org/project/idna/2.7/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Mon, 11 Jun 2018 02:52:19 GMT</pubDate>
+    </item>    <item>
+      <title>2.6</title>
+      <link>https://pypi.org/project/idna/2.6/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Tue, 08 Aug 2017 03:44:58 GMT</pubDate>
+    </item>    <item>
+      <title>2.5</title>
+      <link>https://pypi.org/project/idna/2.5/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Tue, 07 Mar 2017 03:27:23 GMT</pubDate>
+    </item>    <item>
+      <title>2.4</title>
+      <link>https://pypi.org/project/idna/2.4/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Wed, 01 Mar 2017 04:29:29 GMT</pubDate>
+    </item>    <item>
+      <title>2.3</title>
+      <link>https://pypi.org/project/idna/2.3/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Tue, 28 Feb 2017 05:21:19 GMT</pubDate>
+    </item>    <item>
+      <title>2.2</title>
+      <link>https://pypi.org/project/idna/2.2/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Wed, 21 Dec 2016 04:58:09 GMT</pubDate>
+    </item>    <item>
+      <title>2.1</title>
+      <link>https://pypi.org/project/idna/2.1/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Sun, 20 Mar 2016 23:12:50 GMT</pubDate>
+    </item>    <item>
+      <title>2.0</title>
+      <link>https://pypi.org/project/idna/2.0/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Tue, 19 May 2015 00:41:06 GMT</pubDate>
+    </item>    <item>
+      <title>1.1</title>
+      <link>https://pypi.org/project/idna/1.1/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Tue, 27 Jan 2015 17:54:59 GMT</pubDate>
+    </item>    <item>
+      <title>1.0</title>
+      <link>https://pypi.org/project/idna/1.0/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Sun, 12 Oct 2014 18:32:03 GMT</pubDate>
+    </item>    <item>
+      <title>0.9</title>
+      <link>https://pypi.org/project/idna/0.9/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Fri, 18 Jul 2014 18:00:40 GMT</pubDate>
+    </item>    <item>
+      <title>0.8</title>
+      <link>https://pypi.org/project/idna/0.8/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Thu, 10 Jul 2014 04:00:18 GMT</pubDate>
+    </item>    <item>
+      <title>0.7</title>
+      <link>https://pypi.org/project/idna/0.7/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Thu, 10 Jul 2014 03:37:27 GMT</pubDate>
+    </item>    <item>
+      <title>0.6</title>
+      <link>https://pypi.org/project/idna/0.6/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Tue, 29 Apr 2014 16:23:45 GMT</pubDate>
+    </item>    <item>
+      <title>0.5</title>
+      <link>https://pypi.org/project/idna/0.5/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Wed, 05 Feb 2014 17:39:52 GMT</pubDate>
+    </item>    <item>
+      <title>0.4</title>
+      <link>https://pypi.org/project/idna/0.4/</link>
+      <description>Internationalized Domain Names in Applications (IDNA)</description>
+<author>maintainer@example.org</author>      <pubDate>Tue, 07 Jan 2014 17:38:28 GMT</pubDate>
+    </item>  </channel>
+</rss>

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>PyPI recent updates for httpx</title>
+    <link>https://pypi.org/project/httpx/</link>
+    <description>Recent updates to the Python Package Index for httpx</description>
+    <language>en</language>    <item>
+      <title>1.0.dev6</title>
+      <link>https://pypi.org/project/httpx/1.0.dev6/</link>
+      <description>HTTP, for Python.</description>
+<author>maintainer@example.org</author>      <pubDate>Mon, 31 Aug 2026 17:59:54 GMT</pubDate>
+    </item>    <item>
+      <title>1.0.dev5</title>
+      <link>https://pypi.org/project/httpx/1.0.dev5/</link>
+      <description>HTTP, for Python.</description>
+<author>maintainer@example.org</author>      <pubDate>Fri, 21 Aug 2026 10:59:57 GMT</pubDate>
+    </item>    <item>
+      <title>1.0.dev4</title>
+      <link>https://pypi.org/project/httpx/1.0.dev4/</link>
+      <description>HTTP, for Python.</description>
+<author>maintainer@example.org</author>      <pubDate>Wed, 19 Aug 2026 12:36:32 GMT</pubDate>
+    </item>    <item>
+      <title>1.0.dev3</title>
+      <link>https://pypi.org/project/httpx/1.0.dev3/</link>
+      <description>HTTP, for Python.</description>
+<author>maintainer@example.org</author>      <pubDate>Mon, 15 Sep 2025 16:15:10 GMT</pubDate>
+    </item>    <item>
+      <title>1.0.dev2</title>
+      <link>https://pypi.org/project/httpx/1.0.dev2/</link>
+      <description>HTTP, for Python.</description>
+<author>maintainer@example.org</author>      <pubDate>Mon, 04 Aug 2025 16:41:09 GMT</pubDate>
+    </item>    <item>
+      <title>1.0.dev1</title>
+      <link>https://pypi.org/project/httpx/1.0.dev1/</link>
+      <description>HTTP, for Python.</description>
+<author>maintainer@example.org</author>      <pubDate>Wed, 02 Jul 2025 18:49:48 GMT</pubDate>
+    </item>    <item>
+      <title>0.28.1</title>
+      <link>https://pypi.org/project/httpx/0.28.1/</link>
+      <description>The next generation HTTP client.</description>
+<author>maintainer@example.org</author>      <pubDate>Fri, 06 Dec 2024 15:37:21 GMT</pubDate>
+    </item>    <item>
+      <title>0.28.0</title>
+      <link>https://pypi.org/project/httpx/0.28.0/</link>
+      <description>The next generation HTTP client.</description>
+<author>maintainer@example.org</author>      <pubDate>Thu, 28 Nov 2024 14:54:55 GMT</pubDate>
+    </item>    <item>
+      <title>0.27.2</title>
+      <link>https://pypi.org/project/httpx/0.27.2/</link>
+      <description>The next generation HTTP client.</description>
+<author>maintainer@example.org</author>      <pubDate>Tue, 27 Aug 2024 12:53:59 GMT</pubDate>
+    </item>    <item>
+      <title>0.27.1</title>
+      <link>https://pypi.org/project/httpx/0.27.1/</link>
+      <description>The next generation HTTP client.</description>
+<author>maintainer@example.org</author>      <pubDate>Tue, 27 Aug 2024 11:30:38 GMT</pubDate>
+    </item>    <item>
+      <title>0.27.0</title>
+      <link>https://pypi.org/project/httpx/0.27.0/</link>
+      <description>The next generation HTTP client.</description>
+<author>maintainer@example.org</author>      <pubDate>Wed, 21 Feb 2024 13:07:50 GMT</pubDate>
+    </item>    <item>
+      <title>0.26.0</title>
+      <link>https://pypi.org/project/httpx/0.26.0/</link>
+      <description>The next generation HTTP client.</description>
+<author>maintainer@example.org</author>      <pubDate>Wed, 20 Dec 2023 11:02:55 GMT</pubDate>
+    </item>    <item>
+      <title>0.25.2</title>
+      <link>https://pypi.org/project/httpx/0.25.2/</link>
+      <description>The next generation HTTP client.</description>
+<author>maintainer@example.org</author>      <pubDate>Fri, 24 Nov 2023 12:36:31 GMT</pubDate>
+    </item>    <item>
+      <title>0.25.1</title>
+      <link>https://pypi.org/project/httpx/0.25.1/</link>
+      <description>The next generation HTTP client.</description>
+<author>maintainer@example.org</author>      <pubDate>Fri, 03 Nov 2023 13:28:55 GMT</pubDate>
+    </item>    <item>
+      <title>0.25.0</title>
+      <link>https://pypi.org/project/httpx/0.25.0/</link>
+      <description>The next generation HTTP client.</description>
+<author>maintainer@example.org</author>      <pubDate>Mon, 11 Sep 2023 10:17:06 GMT</pubDate>
+    </item>    <item>
+      <title>0.24.1</title>
+      <link>https://pypi.org/project/httpx/0.24.1/</link>
+      <description>The next generation HTTP client.</description>
+<author>maintainer@example.org</author>      <pubDate>Fri, 19 May 2023 00:50:54 GMT</pubDate>
+    </item>    <item>
+      <title>0.24.0</title>
+      <link>https://pypi.org/project/httpx/0.24.0/</link>
+      <description>The next generation HTTP client.</description>
+<author>maintainer@example.org</author>      <pubDate>Tue, 11 Apr 2023 10:01:39 GMT</pubDate>
+    </item>    <item>
+      <title>0.23.3</title>
+      <link>https://pypi.org/project/httpx/0.23.3/</link>
+      <description>The next generation HTTP client.</description>
+<author>maintainer@example.org</author>      <pubDate>Wed, 04 Jan 2023 09:41:19 GMT</pubDate>
+    </item>    <item>
+      <title>0.23.2</title>
+      <link>https://pypi.org/project/httpx/0.23.2/</link>
+      <description>The next generation HTTP client.</description>
+<author>maintainer@example.org</author>      <pubDate>Mon, 02 Jan 2023 11:48:21 GMT</pubDate>
+    </item>    <item>
+      <title>0.23.1</title>
+      <link>https://pypi.org/project/httpx/0.23.1/</link>
+      <description>The next generation HTTP client.</description>
+<author>maintainer@example.org</author>      <pubDate>Fri, 18 Nov 2022 12:50:41 GMT</pubDate>
+    </item>    <item>
+      <title>0.23.0</title>
+      <link>https://pypi.org/project/httpx/0.23.0/</link>
+      <description>The next generation HTTP client.</description>
+<author>maintainer@example.org</author>      <pubDate>Mon, 23 May 2022 15:32:35 GMT</pubDate>
+    </item>    <item>
+      <title>0.22.0</title>
+      <link>https://pypi.org/project/httpx/0.22.0/</link>
+      <description>The next generation HTTP client.</description>
+<author>maintainer@example.org</author>      <pubDate>Wed, 26 Jan 2022 14:50:22 GMT</pubDate>
+    </item>    <item>
+      <title>0.21.3</title>
+      <link>https://pypi.org/project/httpx/0.21.3/</link>
+      <description>The next generation HTTP client.</description>
+<author>maintainer@example.org</author>      <pubDate>Thu, 06 Jan 2022 14:37:54 GMT</pubDate>
+    </item>    <item>
+      <title>0.21.2</title>
+      <link>https://pypi.org/project/httpx/0.21.2/</link>
+      <description>The next generation HTTP client.</description>
+<author>maintainer@example.org</author>      <pubDate>Wed, 05 Jan 2022 16:25:52 GMT</pubDate>
+    </item>    <item>
+      <title>0.21.1</title>
+      <link>https://pypi.org/project/httpx/0.21.1/</link>
+      <description>The next generation HTTP client.</description>
+<author>maintainer@example.org</author>      <pubDate>Tue, 16 Nov 2021 11:52:52 GMT</pubDate>
+    </item>    <item>
+      <title>0.21.0</title>
+      <link>https://pypi.org/project/httpx/0.21.0/</link>
+      <description>The next generation HTTP client.</description>
+<author>maintainer@example.org</author>      <pubDate>Mon, 15 Nov 2021 14:31:54 GMT</pubDate>
+    </item>    <item>
+      <title>0.20.0</title>
+      <link>https://pypi.org/project/httpx/0.20.0/</link>
+      <description>The next generation HTTP client.</description>
+<author>maintainer@example.org</author>      <pubDate>Wed, 13 Oct 2021 09:45:23 GMT</pubDate>
+    </item>    <item>
+      <title>0.19.0</title>
+      <link>https://pypi.org/project/httpx/0.19.0/</link>
+      <description>The next generation HTTP client.</description>
+<author>maintainer@example.org</author>      <pubDate>Thu, 19 Aug 2021 11:38:42 GMT</pubDate>
+    </item>    <item>
+      <title>0.18.2</title>
+      <link>https://pypi.org/project/httpx/0.18.2/</link>
+      <description>The next generation HTTP client.</description>
+<author>maintainer@example.org</author>      <pubDate>Thu, 17 Jun 2021 10:31:31 GMT</pubDate>
+    </item>    <item>
+      <title>0.18.1</title>
+      <link>https://pypi.org/project/httpx/0.18.1/</link>
+      <description>The next generation HTTP client.</description>
+<author>maintainer@example.org</author>      <pubDate>Thu, 29 Apr 2021 12:58:23 GMT</pubDate>
+    </item>    <item>
+      <title>0.18.0</title>
+      <link>https://pypi.org/project/httpx/0.18.0/</link>
+      <description>The next generation HTTP client.</description>
+<author>maintainer@example.org</author>      <pubDate>Tue, 27 Apr 2021 14:23:27 GMT</pubDate>
+    </item>    <item>
+      <title>0.17.1</title>
+      <link>https://pypi.org/project/httpx/0.17.1/</link>
+      <description>The next generation HTTP client.</description>
+<author>maintainer@example.org</author>      <pubDate>Mon, 15 Mar 2021 09:20:06 GMT</pubDate>
+    </item>    <item>
+      <title>0.17.0</title>
+      <link>https://pypi.org/project/httpx/0.17.0/</link>
+      <description>The next generation HTTP client.</description>
+<author>maintainer@example.org</author>      <pubDate>Sun, 28 Feb 2021 16:10:02 GMT</pubDate>
+    </item>    <item>
+      <title>0.16.1</title>
+      <link>https://pypi.org/project/httpx/0.16.1/</link>
+      <description>The next generation HTTP client.</description>
+<author>maintainer@example.org</author>      <pubDate>Thu, 08 Oct 2020 12:16:10 GMT</pubDate>
+    </item>    <item>
+      <title>0.16.0</title>
+      <link>https://pypi.org/project/httpx/0.16.0/</link>
+      <description>The next generation HTTP client.</description>
+<author>maintainer@example.org</author>      <pubDate>Tue, 06 Oct 2020 14:31:20 GMT</pubDate>
+    </item>    <item>
+      <title>0.15.5</title>
+      <link>https://pypi.org/project/httpx/0.15.5/</link>
+      <description>The next generation HTTP client.</description>
+<author>maintainer@example.org</author>      <pubDate>Thu, 01 Oct 2020 12:59:09 GMT</pubDate>
+    </item>    <item>
+      <title>0.15.4</title>
+      <link>https://pypi.org/project/httpx/0.15.4/</link>
+      <description>The next generation HTTP client.</description>
+<author>maintainer@example.org</author>      <pubDate>Fri, 25 Sep 2020 11:36:31 GMT</pubDate>
+    </item>    <item>
+      <title>0.15.3</title>
+      <link>https://pypi.org/project/httpx/0.15.3/</link>
+      <description>The next generation HTTP client.</description>
+<author>maintainer@example.org</author>      <pubDate>Thu, 24 Sep 2020 09:41:00 GMT</pubDate>
+    </item>    <item>
+      <title>0.15.2</title>
+      <link>https://pypi.org/project/httpx/0.15.2/</link>
+      <description>The next generation HTTP client.</description>
+<author>maintainer@example.org</author>      <pubDate>Wed, 23 Sep 2020 10:29:53 GMT</pubDate>
+    </item>    <item>
+      <title>0.15.1</title>
+      <link>https://pypi.org/project/httpx/0.15.1/</link>
+      <description>The next generation HTTP client.</description>
+<author>maintainer@example.org</author>      <pubDate>Wed, 23 Sep 2020 09:23:59 GMT</pubDate>
+    </item>  </channel>
+</rss>

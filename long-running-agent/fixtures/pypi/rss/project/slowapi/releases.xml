@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>PyPI recent updates for slowapi</title>
+    <link>https://pypi.org/project/slowapi/</link>
+    <description>Recent updates to the Python Package Index for slowapi</description>
+    <language>en</language>    <item>
+      <title>0.1.10</title>
+      <link>https://pypi.org/project/slowapi/0.1.10/</link>
+      <description>A rate limiting extension for Starlette and Fastapi</description>
+<author>maintainer@example.org</author>      <pubDate>Sat, 13 Jun 2026 11:59:30 GMT</pubDate>
+    </item>    <item>
+      <title>0.1.9</title>
+      <link>https://pypi.org/project/slowapi/0.1.9/</link>
+      <description>A rate limiting extension for Starlette and Fastapi</description>
+<author>maintainer@example.org</author>      <pubDate>Mon, 05 Feb 2024 12:11:50 GMT</pubDate>
+    </item>    <item>
+      <title>0.1.8</title>
+      <link>https://pypi.org/project/slowapi/0.1.8/</link>
+      <description>A rate limiting extension for Starlette and Fastapi</description>
+<author>maintainer@example.org</author>      <pubDate>Fri, 07 Apr 2023 14:17:59 GMT</pubDate>
+    </item>    <item>
+      <title>0.1.7</title>
+      <link>https://pypi.org/project/slowapi/0.1.7/</link>
+      <description>A rate limiting extension for Starlette and Fastapi</description>
+<author>maintainer@example.org</author>      <pubDate>Mon, 28 Nov 2022 10:20:46 GMT</pubDate>
+    </item>    <item>
+      <title>0.1.6</title>
+      <link>https://pypi.org/project/slowapi/0.1.6/</link>
+      <description>A rate limiting extension for Starlette and Fastapi</description>
+<author>maintainer@example.org</author>      <pubDate>Wed, 24 Aug 2022 09:49:47 GMT</pubDate>
+    </item>    <item>
+      <title>0.1.5</title>
+      <link>https://pypi.org/project/slowapi/0.1.5/</link>
+      <description>A rate limiting extension for Starlette and Fastapi</description>
+<author>maintainer@example.org</author>      <pubDate>Sat, 28 Aug 2021 15:32:49 GMT</pubDate>
+    </item>    <item>
+      <title>0.1.4</title>
+      <link>https://pypi.org/project/slowapi/0.1.4/</link>
+      <description>A rate limiting extension for Starlette and Fastapi</description>
+<author>maintainer@example.org</author>      <pubDate>Sun, 21 Feb 2021 22:48:26 GMT</pubDate>
+    </item>    <item>
+      <title>0.1.3</title>
+      <link>https://pypi.org/project/slowapi/0.1.3/</link>
+      <description>A rate limiting extension for Starlette and Fastapi</description>
+<author>maintainer@example.org</author>      <pubDate>Wed, 23 Dec 2020 22:32:16 GMT</pubDate>
+    </item>    <item>
+      <title>0.1.2</title>
+      <link>https://pypi.org/project/slowapi/0.1.2/</link>
+      <description>A rate limiting extension for Starlette and Fastapi</description>
+<author>maintainer@example.org</author>      <pubDate>Thu, 01 Oct 2020 22:53:47 GMT</pubDate>
+    </item>    <item>
+      <title>0.1.1</title>
+      <link>https://pypi.org/project/slowapi/0.1.1/</link>
+      <description>A rate limiting extension for Starlette and Fastapi</description>
+<author>maintainer@example.org</author>      <pubDate>Wed, 11 Mar 2020 00:03:24 GMT</pubDate>
+    </item>    <item>
+      <title>0.1.0</title>
+      <link>https://pypi.org/project/slowapi/0.1.0/</link>
+      <description>A rate limiting extension for Starlette and Fastapi</description>
+<author>maintainer@example.org</author>      <pubDate>Fri, 21 Feb 2020 13:54:44 GMT</pubDate>
+    </item>  </channel>
+</rss>

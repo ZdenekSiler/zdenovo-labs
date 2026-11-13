@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>PyPI recent updates for APScheduler</title>
+    <link>https://pypi.org/project/apscheduler/</link>
+    <description>Recent updates to the Python Package Index for APScheduler</description>
+    <language>en</language>    <item>
+      <title>3.11.3</title>
+      <link>https://pypi.org/project/apscheduler/3.11.3/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Sun, 28 Jun 2026 19:39:20 GMT</pubDate>
+    </item>    <item>
+      <title>3.11.2</title>
+      <link>https://pypi.org/project/apscheduler/3.11.2/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Mon, 22 Dec 2025 00:39:33 GMT</pubDate>
+    </item>    <item>
+      <title>3.11.1</title>
+      <link>https://pypi.org/project/apscheduler/3.11.1/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Fri, 31 Oct 2025 18:55:41 GMT</pubDate>
+    </item>    <item>
+      <title>4.0.0a6</title>
+      <link>https://pypi.org/project/apscheduler/4.0.0a6/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Sun, 27 Apr 2025 08:36:20 GMT</pubDate>
+    </item>    <item>
+      <title>3.11.0</title>
+      <link>https://pypi.org/project/apscheduler/3.11.0/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Sun, 24 Nov 2024 19:39:24 GMT</pubDate>
+    </item>    <item>
+      <title>4.0.0a5</title>
+      <link>https://pypi.org/project/apscheduler/4.0.0a5/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Wed, 15 May 2024 23:15:37 GMT</pubDate>
+    </item>    <item>
+      <title>4.0.0a4</title>
+      <link>https://pypi.org/project/apscheduler/4.0.0a4/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Mon, 13 Nov 2023 00:48:15 GMT</pubDate>
+    </item>    <item>
+      <title>4.0.0a3</title>
+      <link>https://pypi.org/project/apscheduler/4.0.0a3/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Sun, 01 Oct 2023 21:31:02 GMT</pubDate>
+    </item>    <item>
+      <title>3.10.4</title>
+      <link>https://pypi.org/project/apscheduler/3.10.4/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Sat, 19 Aug 2023 16:44:56 GMT</pubDate>
+    </item>    <item>
+      <title>3.10.3</title>
+      <link>https://pypi.org/project/apscheduler/3.10.3/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Mon, 14 Aug 2023 08:17:39 GMT</pubDate>
+    </item>    <item>
+      <title>3.10.2</title>
+      <link>https://pypi.org/project/apscheduler/3.10.2/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Sat, 12 Aug 2023 22:36:51 GMT</pubDate>
+    </item>    <item>
+      <title>3.10.1</title>
+      <link>https://pypi.org/project/apscheduler/3.10.1/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Fri, 03 Mar 2023 09:03:15 GMT</pubDate>
+    </item>    <item>
+      <title>3.10.0</title>
+      <link>https://pypi.org/project/apscheduler/3.10.0/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Tue, 31 Jan 2023 22:38:37 GMT</pubDate>
+    </item>    <item>
+      <title>3.9.0.post2</title>
+      <link>https://pypi.org/project/apscheduler/3.9.0.post2/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Fri, 11 Nov 2022 21:13:09 GMT</pubDate>
+    </item>    <item>
+      <title>3.9.1.post1</title>
+      <link>https://pypi.org/project/apscheduler/3.9.1.post1/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Fri, 11 Nov 2022 21:08:08 GMT</pubDate>
+    </item>    <item>
+      <title>4.0.0a2</title>
+      <link>https://pypi.org/project/apscheduler/4.0.0a2/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Sun, 04 Sep 2022 18:49:13 GMT</pubDate>
+    </item>    <item>
+      <title>4.0.0a1</title>
+      <link>https://pypi.org/project/apscheduler/4.0.0a1/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Tue, 16 Aug 2022 23:51:59 GMT</pubDate>
+    </item>    <item>
+      <title>3.9.1</title>
+      <link>https://pypi.org/project/apscheduler/3.9.1/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Sun, 27 Feb 2022 16:06:31 GMT</pubDate>
+    </item>    <item>
+      <title>3.9.0.post1</title>
+      <link>https://pypi.org/project/apscheduler/3.9.0.post1/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Thu, 24 Feb 2022 09:22:32 GMT</pubDate>
+    </item>    <item>
+      <title>3.9.0</title>
+      <link>https://pypi.org/project/apscheduler/3.9.0/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Thu, 24 Feb 2022 09:09:48 GMT</pubDate>
+    </item>    <item>
+      <title>3.8.1</title>
+      <link>https://pypi.org/project/apscheduler/3.8.1/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Sun, 24 Oct 2021 20:57:37 GMT</pubDate>
+    </item>    <item>
+      <title>3.8.0</title>
+      <link>https://pypi.org/project/apscheduler/3.8.0/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Thu, 23 Sep 2021 22:10:24 GMT</pubDate>
+    </item>    <item>
+      <title>3.7.0</title>
+      <link>https://pypi.org/project/apscheduler/3.7.0/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Tue, 19 Jan 2021 14:35:16 GMT</pubDate>
+    </item>    <item>
+      <title>3.6.3</title>
+      <link>https://pypi.org/project/apscheduler/3.6.3/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Tue, 05 Nov 2019 07:51:48 GMT</pubDate>
+    </item>    <item>
+      <title>3.6.2</title>
+      <link>https://pypi.org/project/apscheduler/3.6.2/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Mon, 04 Nov 2019 20:43:07 GMT</pubDate>
+    </item>    <item>
+      <title>3.6.1</title>
+      <link>https://pypi.org/project/apscheduler/3.6.1/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Fri, 19 Jul 2019 10:10:00 GMT</pubDate>
+    </item>    <item>
+      <title>3.6.0</title>
+      <link>https://pypi.org/project/apscheduler/3.6.0/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Mon, 18 Mar 2019 10:16:18 GMT</pubDate>
+    </item>    <item>
+      <title>3.5.3</title>
+      <link>https://pypi.org/project/apscheduler/3.5.3/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Wed, 15 Aug 2018 05:53:42 GMT</pubDate>
+    </item>    <item>
+      <title>3.5.2</title>
+      <link>https://pypi.org/project/apscheduler/3.5.2/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Fri, 10 Aug 2018 19:22:14 GMT</pubDate>
+    </item>    <item>
+      <title>3.5.1</title>
+      <link>https://pypi.org/project/apscheduler/3.5.1/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Mon, 15 Jan 2018 23:12:52 GMT</pubDate>
+    </item>    <item>
+      <title>3.5.0</title>
+      <link>https://pypi.org/project/apscheduler/3.5.0/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Sat, 23 Dec 2017 11:29:16 GMT</pubDate>
+    </item>    <item>
+      <title>3.4.0</title>
+      <link>https://pypi.org/project/apscheduler/3.4.0/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Sat, 21 Oct 2017 13:38:40 GMT</pubDate>
+    </item>    <item>
+      <title>3.3.1</title>
+      <link>https://pypi.org/project/apscheduler/3.3.1/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Tue, 27 Dec 2016 22:23:53 GMT</pubDate>
+    </item>    <item>
+      <title>3.3.0</title>
+      <link>https://pypi.org/project/apscheduler/3.3.0/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Sun, 06 Nov 2016 09:25:51 GMT</pubDate>
+    </item>    <item>
+      <title>3.2.0</title>
+      <link>https://pypi.org/project/apscheduler/3.2.0/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Tue, 14 Jun 2016 00:24:01 GMT</pubDate>
+    </item>    <item>
+      <title>3.1.0</title>
+      <link>https://pypi.org/project/apscheduler/3.1.0/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Sat, 02 Apr 2016 10:57:19 GMT</pubDate>
+    </item>    <item>
+      <title>3.0.6</title>
+      <link>https://pypi.org/project/apscheduler/3.0.6/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Wed, 30 Mar 2016 06:59:50 GMT</pubDate>
+    </item>    <item>
+      <title>3.0.5</title>
+      <link>https://pypi.org/project/apscheduler/3.0.5/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Thu, 10 Dec 2015 23:13:49 GMT</pubDate>
+    </item>    <item>
+      <title>3.0.4</title>
+      <link>https://pypi.org/project/apscheduler/3.0.4/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Fri, 02 Oct 2015 09:28:32 GMT</pubDate>
+    </item>    <item>
+      <title>3.0.3</title>
+      <link>https://pypi.org/project/apscheduler/3.0.3/</link>
+      <description>In-process task scheduler with Cron-like capabilities</description>
+<author>maintainer@example.org</author>      <pubDate>Mon, 27 Apr 2015 05:41:52 GMT</pubDate>
+    </item>  </channel>
+</rss>

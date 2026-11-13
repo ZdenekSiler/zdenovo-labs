@@ -1,0 +1,17 @@
+# zdenovo backend direct dependencies, versions from uv.lock (snapshot 2026-11-12)
+fastapi==0.135.1
+uvicorn==0.41.0
+jinja2==3.1.6
+anthropic==0.84.0
+python-dotenv==1.2.2
+apscheduler==3.11.2
+mistune==3.3.4
+python-multipart==0.0.32
+itsdangerous==2.2.0
+httpx==0.28.1
+pyyaml==6.0.3
+slowapi==0.1.10
+bleach==6.4.0
+pygments==2.20.0
+idna==3.18
+starlette==1.3.1
